@@ -1,0 +1,28 @@
+{
+  "name": "rest-ts",
+  "version": "1.0.0",
+  "description": "backend rest express mongodb",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "keywords": [
+    "rest",
+    "ts",
+    "nodejs",
+    "express"
+  ],
+  "author": "armand.ballaci",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.16.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.3",
+    "nodemon": "^1.18.9"
+  }
+}

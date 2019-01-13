@@ -95,11 +95,14 @@ export class EventViewComponent implements OnInit {
     const gcEvent = event.meta.event;
     let jsonld = {};
     try {
+      // @ts-ignore
+      // @ts-ignore
+      // @ts-ignore
       jsonld = {
         '@context': 'http://www.schema.org',
         '@type': 'DanceEvent',
         'name': event.title,
-        'url': 'https://salsa.today/#/detail/' + event.id,
+        'url': 'https://salsa.today/#/detail/' + gcEvent.id,
         'description': gcEvent.description.substring(0, 300),
         'startDate': format( event.start, 'M/d/YYYY HH:mm Z'),
         'endDate': format( event.end, 'M/d/YYYY HH:mm Z'),
@@ -119,15 +122,15 @@ export class EventViewComponent implements OnInit {
         'offers': {
           '@type': 'Offer',
           'description': 'Monatliche Gebühren',
-          'url': gcEvent.website,
+          'url': 'https://salsa.today/#/detail/' + gcEvent.id,
           'price': '35',
           'priceCurrency': 'EUR',
           'availability': 'http://schema.org/InStock',
-          'validFrom': format( event.start, 'M/d/YYYY HH:mm Z')
+          'validFrom': format( event.start, 'M/d/YYYY HH:mm Z'),
         },
         'image': [gcEvent.attachments[0].fileUrl],
         'performer': {
-          '@type': 'PerformingArtist',
+          '@type': 'Person',
           'name': 'DJ JCM Latino'
         }
       };

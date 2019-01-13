@@ -1,2 +1,2 @@
 #!/bin/sh
-npm run release && scp -r dist/* root@h2770347.stratoserver.net:/var/www/html
+npm run build:ssr && scp -r dist root@h2770347.stratoserver.net:/var/www/html

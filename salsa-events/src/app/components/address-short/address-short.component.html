@@ -1,0 +1,7 @@
+<div class="address" *ngIf="!hasError; else splice">
+    <ng-container *ngIf="name" class="name">{{name | titlecase}}, </ng-container>
+    <ng-container *ngIf="stadt">{{stadt}}</ng-container>
+</div>
+<ng-template #splice>
+  {{address | splitAndGet:',':50}}...
+</ng-template>

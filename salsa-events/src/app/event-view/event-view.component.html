@@ -1,0 +1,209 @@
+<cdk-virtual-scroll-viewport id="cdk-viewport" *ngIf="isMobile; else desktop" [itemSize]=324 [minBufferPx]=324
+                             [maxBufferPx]=648 class="cdk-viewport .d-flex p-2">
+  <div *cdkVirtualFor="let event of events; trackBy: indexTrackFn"
+       class="event-item col-lg-4 col-md-4 col-sm-6 col-xs-12 p-lg-3" [@routeAnimations]="exp">
+    <a [routerLink]="['/detail', event.meta.event._id]">
+      <div class="wrapper" (click)="eventClicked.emit(event)" [ngClass]="event.meta.event?.type">
+        <div class="ev-container">
+          <div class="top"
+               [ngStyle]="{'background-image':'url(' + (event.meta.event?.attachments  ? 'https://drive.google.com/uc?id='+ event.meta.event?.attachments[0].fileId : event.meta.event.thumbnail) + ')'}"></div>
+          <div class="my-bottom d-flex flex-row">
+            <div class="view-date d-flex flex-column">
+              <span class="text-uppercase month">{{ event.start | date: 'MMM':'+1':'de' }}</span>
+              <span class="day">{{ event.start | date: 'dd' }}</span>
+            </div>
+            <div class="my-info">
+              <h3 class="title"
+                  [ngClass]="{'cancelled': event.meta.event.status === 'cancelled'}">{{ event.title | titlecase }}</h3>
+              <span class="d-flex flex-row align-items-center" *ngIf="event.meta.event?.location">
+            <i class="material-icons" style="color: #bfbfbf">location_on</i>
+                  <app-address-short class="ml-1"
+                                     [address]="event.meta.event?.location ? event.meta.event?.location : event.meta.event?.defaultLocation"></app-address-short>
+          </span>
+              <span class="d-flex flex-row time mt-2 align-items-center" *ngIf="event.start">
+           <i class="fa fa-clock-o" style="font-size: 18px; padding: 0 5px 0 5px; color: #bfbfbf"></i>
+                   <div class="ml-1">{{ event.start | date: 'EE HH:mm':'+1':'de' }} Uhr</div>
+                <!--<time class="ml-1" datetime="{{event.start}}">{{event.start | date: 'EE HH:mm':'+1':'de'}} Uhr</time>-->
+          </span>
+            </div>
+          </div>
+        </div>
+        <div class="inside">
+          <div class="icon" *ngIf="event.meta.event.status === 'cancelled'; else infoIcons">
+            <i class="material-icons text-danger">
+              error_outline
+            </i>
+          </div>
+          <ng-template #infoIcons>
+            <!-- logic && operator -->
+            <div class="icon" *ngIf="event.meta.event.type === 'party'">
+              <i class="material-icons" style="color: #a30505;">
+                local_bar
+              </i>
+            </div>
+            <!-- logic && operator -->
+            <div class="icon" *ngIf="event.meta.event.type === 'workshop'">
+              <i class="fa fa-graduation-cap" style="color: #ff9800;"></i>
+            </div>
+            <div class="icon" *ngIf="event.meta.event.type === 'kurs'">
+              <i class="fa fa-graduation-cap" style="color: #07880c;"></i>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </a>
+    <!--<ngx-json-ld [json]="toJsonLd(event)"></ngx-json-ld>-->
+  </div>
+</cdk-virtual-scroll-viewport>
+
+<ng-template #desktop>
+  <div class=".d-flex row flex-wrap p-2">
+    <div *ngFor="let event of events; let i = index" class="col-lg-4 col-md-4 col-sm-6 col-xs-12 p-lg-3">
+      <div (click)="showModal(i)">
+        <ngx-json-ld [json]="toJsonLd(event)"></ngx-json-ld>
+        <div class="wrapper" [ngClass]="event.meta.event?.type">
+          <div class="ev-container">
+            <div class="top"
+                 [ngStyle]="{'background-image':'url(' + (event.meta.event?.attachments  ? 'https://drive.google.com/uc?id='+ event.meta.event?.attachments[0].fileId : event.meta.event.thumbnail) + ')'}"></div>
+            <div class="my-bottom d-flex flex-row">
+              <div class="view-date d-flex flex-column">
+                <span class="text-uppercase month">{{ event.start | date: 'MMM':'+1':'de' }}</span>
+                <span class="day">{{ event.start | date: 'dd' }}</span>
+              </div>
+              <div class="my-info">
+                <h3 class="title"
+                    [ngClass]="{'cancelled': event.meta.event.status === 'cancelled'}">{{ event.title | titlecase }}</h3>
+                <span class="d-flex flex-row align-items-center"
+                      *ngIf="event.meta.event?.location || event.meta.event?.defaultLocation">
+            <i class="material-icons" style="color: #bfbfbf">location_on</i>
+              <app-address-short class="ml-1"
+                                 [address]="event.meta.event?.location ? event.meta.event?.location : event.meta.event?.defaultLocation"></app-address-short>
+          </span>
+                <span class="d-flex flex-row time mt-2 align-items-center" *ngIf="event.start">
+           <i class="fa fa-clock-o" style="font-size: 18px; padding: 0 5px 0 5px; color: #bfbfbf"></i>
+              <div class="ml-1">{{ event.start | date: 'EE HH:mm':'+1':'de' }} Uhr</div>
+          </span>
+              </div>
+            </div>
+          </div>
+          <div class="inside">
+            <div class="icon" *ngIf="event.meta.event.status === 'cancelled'; else infoIcons">
+              <i class="material-icons text-danger">
+                error_outline
+              </i>
+            </div>
+            <ng-template #infoIcons>
+              <!-- logic && operator -->
+              <div class="icon" *ngIf="event.meta.event.type === 'party'">
+                <i class="material-icons" style="color: #a30505;">
+                  local_bar
+                </i>
+              </div>
+              <!-- logic && operator -->
+              <div class="icon" *ngIf="event.meta.event.type === 'workshop'">
+                <i class="fa fa-graduation-cap" style="color: #ff9800;"></i>
+              </div>
+              <div class="icon" *ngIf="event.meta.event.type === 'kurs'">
+                <i class="fa fa-graduation-cap" style="color: #298809;"></i>
+              </div>
+            </ng-template>
+            <div class="contents cnd-txt">
+              <p style="color: #dc3545" *ngIf="event.meta.event.status === 'cancelled'">
+                ACHTUNG! Event abgesagt!
+              </p>
+              <p *ngIf="event.meta.event?.description">
+                {{ (event.meta.event?.description | slice:0:300) + '...' }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <modal #eventDetailModal>
+    <modal-header>
+      <h3 *ngIf="gcEvent" class="detail-title mb-0"
+          [ngClass]="{'cancelled': gcEvent.status === 'cancelled'}">{{event.title | titlecase}}</h3>
+    </modal-header>
+    <modal-content>
+      <div *ngIf="gcEvent" class="event-details  mx-auto">
+        <img alt="event thumbnail"
+             src="{{(gcEvent?.attachments  ? 'https://drive.google.com/uc?id='+ gcEvent?.attachments[0].fileId : gcEvent.thumbnail)}}">
+        <div class="info">
+          <div class="organiser info-block">
+            <div *ngIf="gcEvent.event_organiser">von {{gcEvent.event_organiser}}</div>
+          </div>
+          <div class="divider"></div>
+          <div class="d-flex flex-row mb-2">
+            <div class="d-flex flex-row align-items-top info-block col-4 p-0" *ngIf="gcEvent?.start">
+              <i class="material-icons md-dark md-32">date_range</i>
+              <div *ngIf="event" class="detail-text">
+                <h5 class="">Datum und Uhrzeit</h5>
+                <app-date [event]="event"></app-date>
+              </div>
+            </div>
+            <div class="mat-button-toggle-standalone p-2 button-to-calendar info-block" (click)="downloadIcs()">
+              Zum Kalender hinzufügen
+            </div>
+          </div>
+          <div class="d-flex flex-row mb-2">
+            <div class="d-flex flex-row align-items-top info-block mt-0" *ngIf="gcEvent?.location">
+              <i class="material-icons md-dark md-32">location_on</i>
+              <div class="detail-text">
+                <h5 class="">Veranstaltungsort</h5>
+                <app-address [address]="gcEvent?.location"></app-address>
+                <a class="link" (click)="scrollToMap()">Karte anzeigen</a>
+              </div>
+            </div>
+            <div class="d-flex flex-row align-items-top info-block mt-0" *ngIf="gcEvent?.tags">
+              <svg style="width:32px;height:32px" viewBox="0 0 24 24">
+                <path fill="#bfbfbf"
+                      d="M5.5,7A1.5,1.5 0 0,1 4,5.5A1.5,1.5 0 0,1 5.5,4A1.5,1.5 0 0,1 7,5.5A1.5,1.5 0 0,1 5.5,7M21.41,11.58L12.41,2.58C12.05,2.22 11.55,2 11,2H4C2.89,2 2,2.89 2,4V11C2,11.55 2.22,12.05 2.59,12.41L11.58,21.41C11.95,21.77 12.45,22 13,22C13.55,22 14.05,21.77 14.41,21.41L21.41,14.41C21.78,14.05 22,13.55 22,13C22,12.44 21.77,11.94 21.41,11.58Z"/>
+              </svg>
+              <div class="detail-text">
+                <h5 class="" id="tags">Tags</h5>
+                <div class="d-flex flex-row flex-wrap m-l-2">
+                  <div *ngFor="let tag of gcEvent.tags" class="tag mr-2 mb-1 p-2" style="border: 1px solid; border-radius: 20px; border-color: rgba(191,191,191,.3)">{{tag}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex flex-row align-items-top info-block mt-0" *ngIf="gcEvent?.description">
+            <i class="material-icons" style="font-size: 26px; color: #bfbfbf">pages</i>
+            <div class="detail-text">
+              <h5 class="" id="description">Beschreibung</h5>
+              <div class="description">
+                <app-read-more>
+                  {{ gcEvent?.description }}
+                </app-read-more>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="d-flex flex-row">
+            <div *ngIf="gcEvent.event_organiser" class="organiser info-block mt-4 col-4">
+              Veranstalter von:<h5 class=""> {{event.title | titlecase}}</h5>
+              <div>{{gcEvent.event_organiser}}</div>
+              <app-address *ngIf="gcEvent?.defaultLocation" [address]="gcEvent?.defaultLocation"></app-address>
+              <div><a href="{{gcEvent.website}}">{{gcEvent.website}}</a></div>
+              <div class="tel">
+                Tel: <a href="tel:{{gcEvent.telefon}}">{{gcEvent.telefon}}</a>
+              </div>
+            </div>
+            <div *ngIf="mapUrl" id="map-target" class="mapouter mx-auto">
+              <div class="gmap_canvas">
+                <iframe id="gmap_canvas" title="Veranstaltung location map" [src]="mapUrl | safe" frameborder="0"
+                        scrolling="no" marginheight="0"
+                        marginwidth="0"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+    </modal-content>
+    <modal-footer>
+      <button type="button" class="btn btn-primary" ngbAutofocus (click)="closeModal()">OK</button>
+    </modal-footer>
+  </modal>
+</ng-template>

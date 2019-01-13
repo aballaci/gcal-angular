@@ -1,0 +1,28 @@
+div.collapsed {
+  height: 250px;
+  overflow: hidden;
+
+  &::after {
+    background-image: -webkit-linear-gradient(top,rgba(255,255,255,0) 0,#FFF 100%);
+    background-image: linear-gradient(to bottom,rgba(255,255,255,0) 0,#FFF 100%);
+    bottom: 22.6px;
+    content: '';
+    height: 45.2px;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.read-more{
+  margin-bottom: 5px;
+}
+
+@media (min-width: 576px) {
+  div.collapsed {
+    height: 120px;
+  }
+}
+
+

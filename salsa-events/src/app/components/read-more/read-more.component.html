@@ -1,0 +1,4 @@
+<div class="read-more" [class.collapsed]="isCollapsed">
+  <ng-content></ng-content>
+</div>
+<a style="color: blue" (click)="scrollToView()">{{isCollapsed? 'Mehr' : 'Weniger'}} anzeigen</a>

@@ -1,0 +1,238 @@
+#main-menu{
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(174, 190, 212, 0.4);
+}
+
+.nav{
+  color: #fff;
+}
+
+.nav-item{
+  margin: .5rem;
+  border-radius: 1rem;
+  color: #fff;
+}
+
+.nav-item a{
+  color: #fff;
+  border-radius: 1rem;
+  margin: .5rem;
+  text-shadow: 0 4px 10px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(174, 190, 212, 0.4);
+}
+
+.nav-item:hover, .nav-item:active, .nav-item.active{
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: .5rem;
+}
+
+.nav-item:hover a{
+  color:#fff;
+}
+
+.nav-item.selected a{
+  color:#fff;
+}
+
+.nav-item.selected{
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: .5rem;
+}
+
+.navbar-icon-top .navbar-nav .nav-link > .fa {
+  position: relative;
+  width: 36px;
+  font-size: 26px;
+  color: #fff;
+}
+
+button:focus {
+  outline: 1px dotted;
+  /* outline: 5px auto -webkit-focus-ring-color; */
+}
+
+.navbar-light .navbar-toggler {
+  color: rgba(0,0,0,.5);
+  border: none;
+}
+
+
+.navbar-icon-top .navbar-nav .nav-link > .fa {
+  top: 3px;
+  line-height: 12px;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 576px) {
+
+  #main-menu{
+    border: none;
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 40%;
+  }
+
+  .navbar-light .navbar-toggler-icon {
+    background-image: url('../../assets/menu-button.png');
+    }
+
+  .nav-md-social{
+    display: none;
+  }
+  .navbar-brand{
+    width: 50%;
+  }
+  .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link {
+    text-align: center;
+    display: table-cell;
+    height: 50px;
+    vertical-align: middle;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  #main-menu > li {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  #main-menu > li.nav-item > a{
+    padding: 0;
+    color: #606467;
+  }
+
+  #main-menu > li.nav-item > a > i{
+    color: #414548;
+  }
+
+  .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa {
+    display: block;
+    width: 48px;
+    margin: 2px auto 4px auto;
+    top: 0;
+    line-height: 24px;
+  }
+  .nav{
+    color: #fff;
+  }
+
+  .nav-item{
+    color: #ccc;
+  }
+
+  .nav-item a{
+    color: #fff;
+    border-radius: 1rem;
+    margin: .5rem;
+    text-shadow: 0 4px 10px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(174, 190, 212, 0.4);
+  }
+
+  .nav-item:hover, .nav-item:active, .nav-item.active{
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: .5rem;
+  }
+
+  .nav-item:hover a{
+    color:#fff;
+  }
+
+  .nav-item.selected a{
+    color:#fff;
+  }
+
+  .nav-item.selected{
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: .5rem;
+  }
+
+  .navbar-icon-top .navbar-nav .nav-link > .fa {
+    position: relative;
+    width: 36px;
+    font-size: 26px;
+    color: #fff;
+  }
+
+}
+
+
+@media (min-width: 576px) {
+  .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link {
+    text-align: center;
+    display: table-cell;
+    height: 70px;
+    vertical-align: middle;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa {
+    display: block;
+    width: 48px;
+    margin: 2px auto 4px auto;
+    top: 0;
+    line-height: 24px;
+  }
+
+}
+
+@media (min-width: 768px) {
+  .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link {
+    text-align: center;
+    display: table-cell;
+    height: 70px;
+    vertical-align: middle;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa {
+    display: block;
+    width: 48px;
+    margin: 2px auto 4px auto;
+    top: 0;
+    line-height: 24px;
+  }
+
+  .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa > .badge {
+    top: -7px;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link {
+    text-align: center;
+    display: table-cell;
+    height: 70px;
+    vertical-align: middle;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa {
+    display: block;
+    width: 48px;
+    margin: 2px auto 4px auto;
+    top: 0;
+    line-height: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link {
+    text-align: center;
+    display: table-cell;
+    height: 70px;
+    vertical-align: middle;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa {
+    display: block;
+    width: 48px;
+    margin: 2px auto 4px auto;
+    top: 0;
+    line-height: 24px;
+  }
+}

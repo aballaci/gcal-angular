@@ -1,0 +1,10 @@
+.bottom-nav {
+  z-index: 2;
+}
+
+.bottom-nav__action {
+  &:focus, &:hover {
+    text-decoration: none;
+    color: #ffffff;
+  }
+}

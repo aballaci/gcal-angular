@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "eternal-ship-221000",
+  "private_key_id": "2ee5469dec3caa2182915f0be1c924ad0f862527",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCnjll/ulmD1Ytj\nnc8DAk+93mB2E/fxpGReXa00JcfEZjKDG3jVRwTDHeJ+7b9gVeyyMIDDzCVtbe1a\nYtqA1Swjl0NerTcxcKeSiKC4h4TVhWqajv3lE2IVpWmlmLT4RDW2Gc5RE3f/OrVF\npSHPpR/NJJSKqAOeXCVWN7ASzlKTBAfGLhLjlgretB4ijQgOHkKJJg1WA3E3tRi3\nLaZafgov/pYy0993AoqkiPrK6g4udY08lwmeR0aLgPC0cGlpU5zjUwakNJYcyvEC\niwuEtiIAtvgmybx9KtRsFAlOEXLLY/NtF/u0spbQbkKI2xKoXQ2aJsmgsi1wVtJP\nR83bbWMRAgMBAAECggEACS3B/x5gHDnY4Y+B6TwpjmEF134TS3JaGbXHwNcvfPWs\nv3QkL8nMy9wBnfqr7Mz0MxQ3X5J5u+eFVLnc1qkm2nnFM+TpBL0zPtKbfFRXLWO6\nQeaCp9eCnGUz9wF5K28AIr5B6DzY6ltG1h58Tk3RQsmF1h0rWpPZa0JQc81H5nv/\nk3+fwlgrM9CuYQQa0ssdU8PKnTdRPeUBw6qRo3b6j/hLpWOQ7NN07MAUNnwHCjCT\n8gszNwdumiF8cHh7dcgMQnYbGgD6qabrLuBSejdSVurk6SJgv7PX8JbOq97FJVNw\ncCCAzLvfXWO8/VoTu+6Ztw3CkVkz9VJ2dnSfFlB0qQKBgQDn3AGMA/KCBAWvo41v\nx7YLtJmX4Mef+NHMxTfeETfzl1v2oq+gpa0bR+H3WB5LFdfVL0rTR0Cn0Xoq1VPg\nP1B9unqZX5XqxsyyVdyf7xQyuTJZvy6js+xlTbszeH/2tq9w65+hzVJGpA7LpCKZ\njvgUwQHcqKBTnCnL9l61TZ+UGQKBgQC5AGX/39lVCIEVpI0tRMxWiOI/2kMn8st4\nCTfMr+AyrUnmi23bKA0V23QKbEx+5wyuLRuiSnckPnal7eCm6nWjKlo6L9G4z/v0\n+dEl7I1L3Oyxug91uooJJ535rhGM5wSoVEigH7/trhlleGjsnYvlITyyoeTjUdnF\nj+QTHMnluQKBgQDa/u2jHzNWZJAuVm/IDb1ADyQn1RMYYT9gh0L+iAruFJ+zM/Ro\n6zO3Gc0v/9YVG5uR66pkJt/F4tDeVkJ0A7l2F8Wmyibi60T6iKjrkzjjtBL/u9lE\nnDQDd0kDE6TiFaleId/URweYW2ryI6Ten7BogejNT6SndE/yK1FHM/svOQKBgQC3\neLivmW2tUiDKuQW15mwMSfavwqMlZDn70pB/M9FSEN+gf5i0ZzUK/zhG+f6nQDco\nKd4lBlrAHB6JEq/gedeuuNsAp9oCwmmrG3IbfUzn9rLa055vcE9jIuId806+gYHx\n+pyICNTMQAQ5yL+uIdTSqTLMKZiZBNzHfJuBhOSKKQKBgQCdEhru5Gwzk4p8bj9V\nu7z5c/66M7CmjL3EGlbHoxhNgw7pHln02zXLhhjaEpHI2x1miBYK7vKB8NbX+oK/\nQL6BymnfmcuxokJOn0Ak/htPmVklgfXzgQHptXmgkIkO8wREntQJmMPO09fx4/lm\n2DaGbKDpN1t2DQwFwhq/OjTt/w==\n-----END PRIVATE KEY-----\n",
+  "client_email": "cal-sync@eternal-ship-221000.iam.gserviceaccount.com",
+  "client_id": "114449535526194848083",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cal-sync%40eternal-ship-221000.iam.gserviceaccount.com"
+}

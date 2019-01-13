@@ -1,0 +1,105 @@
+<ng-template #modalContent let-close="close">
+  <div class="">
+    <div class="modal-header">
+      <h5 class="modal-title font-ostrich-regular">{{ event.event.title }}</h5>
+      <button type="button" class="close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="event.event.meta.event?.attachments" style="text-align: center">
+        <img src="https://drive.google.com/uc?id={{ event.event.meta.event?.attachments[0].fileId }}"/>
+      </div>
+    </div>
+    <div class="modal-body">
+      <span class="font-stint"><i class="fas fa-clock" style="color:#1e003799"></i> {{ event.event.start | date: 'dd/MM/yyyy HH:mm' }} Uhr</span><br>
+      <span *ngIf="event.event.meta.event?.location" class="font-stint">
+        <i class="fas fa-map-marker-alt" style="color:#1e003799"></i>&nbsp; {{ event.event.meta.event?.loc }}ion}}</span>
+    </div>
+    <div class="modal-body" *ngIf="event.event.meta.event.description" style="border-top: 1px solid #dae1e7;">
+      <p style="font-family: sans-serif; font-size: 12px; margin-top: 5px; text-align: left">
+        {{ event.event.meta.event.description }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary col-sm-1" ngbAutofocus (click)="close()">OK</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #customCellTemplate let-day="day" let-locale="locale">
+  <div class="cal-cell-top">
+    <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
+    <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+  </div>
+  <div class="cell-totals">
+    <span
+      *ngFor="let group of day.eventGroups"
+      class="badge badge-{{ group[0] }}">
+      {{ group[1].length }}
+    </span>
+  </div>
+</ng-template>
+
+<div id="app" class="row">
+    <div class="col-5">
+
+      <mwl-demo-utils-calendar-header
+        [(view)]="view"
+        [(viewDate)]="viewDate"
+        [locale]="locale"
+        (viewDateChange)="fetchEvents()"
+        (viewChange)="fetchEvents()">
+      </mwl-demo-utils-calendar-header>
+
+      <ng-template #loading>
+        <div class="text-center">
+          <i class="fa fa-spin fa-spinner fa-5x"></i>
+          <br>
+          Loading events...
+        </div>
+      </ng-template>
+
+      <div *ngIf="events$ | async; else loading; let events" class="calendar">
+        <div [ngSwitch]="view">
+          <mwl-calendar-month-view
+            *ngSwitchCase="'month'"
+            [viewDate]="viewDate"
+            [events]="events"
+            [locale]="locale"
+            [weekStartsOn]="weekStartsOn"
+            [activeDayIsOpen]="activeDayIsOpen"
+            [cellTemplate]="customCellTemplate"
+            (beforeViewRender)="beforeMonthViewRender($event)"
+            (dayClicked)="dayClicked($event.day)">
+          </mwl-calendar-month-view>
+          <mwl-calendar-week-view
+            *ngSwitchCase="'week'"
+            [viewDate]="viewDate"
+            [events]="events"
+            [locale]="locale">
+          </mwl-calendar-week-view>
+          <mwl-calendar-day-view
+            *ngSwitchCase="'day'"
+            [viewDate]="viewDate"
+            [events]="events"
+            [locale]="locale">
+          </mwl-calendar-day-view>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-7">
+      <app-filter
+        [(eventType)]="eventType"
+        (changeSelection)="filterEvents($event)"></app-filter>
+
+      <app-event-view
+      [events]="dayEvents"
+      [viewDate]="viewDate"
+      (eventClicked)="eventClicked($event)">
+      </app-event-view>
+    </div>
+
+  </div>
+

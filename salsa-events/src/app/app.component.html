@@ -1,0 +1,15 @@
+<app-mat-nav *ngIf="isMobile; else desktop"></app-mat-nav>
+<ng-template #desktop>
+  <app-header *ngIf="!isMobile"></app-header>
+  <div id="bg">
+    <img src="assets/parallax-bg.png" alt="">
+  </div>
+</ng-template>
+<app-loader></app-loader>
+<app-mob-menu-bottom [@scrollAnimation]="state" *ngIf="isMobile"></app-mob-menu-bottom>
+<div class="content-wrapper">
+  <router-outlet></router-outlet>
+  <!--<div class="footer">-->
+    <!--<img src="../assets/ico.png">-->
+  <!--</div>-->
+</div>

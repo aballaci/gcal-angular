@@ -1,0 +1,64 @@
+<div *ngIf="event" class="event-details  mx-auto">
+  <img alt="event thumbnail"
+    src="{{(gcEvent?.attachments  ? 'https://drive.google.com/uc?id='+ gcEvent?.attachments[0].fileId : gcEvent.thumbnail)}}">
+  <div class="info">
+    <h3 class="detail-title" [ngClass]="{'cancelled': gcEvent.status === 'cancelled'}">{{event.title | titlecase}}</h3>
+    <div  class="organiser info-block">
+      <div *ngIf="gcEvent.event_organiser">von {{gcEvent.event_organiser}}</div>
+    </div>
+    <div class="d-flex flex-row align-items-top info-block" *ngIf="gcEvent?.start">
+      <i class="material-icons md-dark md-32">date_range</i>
+      <div class="detail-text">
+        <h5 class="">Datum und Uhrzeit</h5>
+        <app-date [event]="event"></app-date>
+      </div>
+
+    </div>
+
+    <div class="d-flex flex-row align-items-top info-block" *ngIf="gcEvent?.location">
+      <i class="material-icons md-dark md-32">location_on</i>
+      <div class="detail-text">
+        <h5 class="">Veranstaltungsort</h5>
+        <app-address [address]="gcEvent?.location"></app-address>
+        <a class="link" (click)="scrollToMap()">Karte anzeigen</a>
+      </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-top info-block" *ngIf="gcEvent?.description">
+      <i class="material-icons" style="font-size: 26px; color: #bfbfbf">pages</i>
+      <div class="detail-text">
+        <h5 class="" id="description">Beschreibung</h5>
+        <div class="description mb-4">
+          <app-read-more>
+          {{ gcEvent?.description }}
+          </app-read-more>
+        </div>
+      </div>
+    </div>
+    <span #trigger class="mat-button-toggle-standalone p-2 button-to-calendar" (click)="downloadIcs()">
+      <img class="to-calendar" src="../../assets/icon-calendar-t1.svg">
+      Zum Kalender hinzufügen
+    </span>
+    <div *ngIf="gcEvent.event_organiser" class="organiser info-block mt-4">
+      Veranstalter von:<h5 class=""> {{event.title | titlecase}}</h5>
+      <div>{{gcEvent.event_organiser}}</div>
+      <app-address *ngIf="gcEvent?.defaultLocation" [address]="gcEvent?.defaultLocation"></app-address>
+      <div><a href="{{gcEvent.website}}">{{gcEvent.website}}</a></div>
+      <div class="tel">
+        Tel: <a href="tel:{{gcEvent.telefon}}">{{gcEvent.telefon}}</a>
+      </div>
+    </div>
+    <div *ngIf="gcEvent.tags" class="tags info-block mt-4">
+      <h5 class="">Tags</h5>
+      <div  class="d-flex flex-row flex-wrap m-l-2">
+        <div *ngFor="let tag of gcEvent.tags" class="mr-2 mb-1 p-2 btn-info btn-round">{{tag}}</div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="mapUrl" id="map-target" class="mapouter mx-auto">
+    <div class="gmap_canvas">
+      <iframe id="gmap_canvas" title="Veranstaltung location map" [src]="mapUrl | safe" frameborder="0" scrolling="no" marginheight="0"
+              marginwidth="0"></iframe>
+    </div>
+  </div>
+</div>

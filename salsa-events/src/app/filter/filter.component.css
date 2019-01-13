@@ -1,0 +1,13 @@
+#filter{
+  margin-left: 3rem;
+}
+
+.filter:hover {
+  color: white;
+}
+
+@media (max-width: 576px) {
+  #filter{
+    display: none;
+  }
+}

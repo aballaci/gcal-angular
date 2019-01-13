@@ -1,0 +1,60 @@
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-light">
+  <img class="navbar-brand mr-auto" src="../../assets/logo-9.png"/>
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
+    <ul class="nav navbar-nav ml-auto cnd-txt" id="main-menu" (click)="toggleNavbar()">
+      <li class="nav-item" routerLinkActive="selected" >
+        <a class="nav-link" routerLink="home" title="Salsa today">
+          <i class="fa fa-home"></i>
+          Home
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="selected">
+        <a class="nav-link"  routerLink="calendar" title="Kalendar">
+          <i class="fa fa-calendar"></i>
+          Kalendar
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="selected" >
+        <a class="nav-link" routerLink="playlists" title="Playlists">
+          <i class="fa fa-headphones"></i>
+          Playlists
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="selected" >
+        <a class="nav-link" routerLink="about" title="Über mich">
+          <i class="fa fa-info-circle"></i>
+          Über mich
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="selected" >
+        <a class="nav-link" routerLink="signup" title="Sign up">
+          <i class="fa fa-user-circle"></i>
+          Profile
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto cnd-txt nav-md-social" style="background-color: transparent">
+    <li class="nav-item">
+      <a class="nav-link" href="#pablo">
+        <i class="fa fa-facebook-square"></i>
+        Share
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#pablo">
+        <i class="fa fa-twitter"></i>
+        Tweet
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#pablo">
+        <i class="fa fa-pinterest"></i>
+        Pin
+      </a>
+    </li>
+  </ul>
+  </div>
+</nav>

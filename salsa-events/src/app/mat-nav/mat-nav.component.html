@@ -1,0 +1,48 @@
+<div class="mobile-header">
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+                 [attr.role]="'navigation'"
+                 [mode]="'over'"
+                 [opened]="false"
+                 (panleft)="drawer.toggle()">
+      <div class="bg-img">
+      <mat-nav-list class="nav-list">
+        <a class="nav-link" routerLink="home" (click)="drawer.toggle()" title="Salsa today" routerLinkActive="selected">
+          <i class="fa fa-home"></i>
+          Startseite
+        </a>
+        <a class="nav-link" routerLink="playlists" (click)="drawer.toggle()" title="DJ Playlists" routerLinkActive="selected">
+          <i class="fa fa-headphones"></i>
+          DJ Playlists
+        </a>
+        <a class="nav-link" routerLink="about" (click)="drawer.toggle()" title="Impressum" routerLinkActive="selected">
+          <i class="fa fa-info-circle"></i>
+          Impressum
+        </a>
+        <a class="nav-link" routerLink="signup" (click)="drawer.toggle()" title="Log in" routerLinkActive="selected">
+          <i class="fa fa-user-circle"></i>
+          Login
+        </a>
+      </mat-nav-list>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content role="main">
+      <mat-toolbar color="primary">
+        <a  [routerLink]="['/home']">
+        <span class="mr-auto"><img class="navbar-brand" src="../../assets/logo-9.png" aria-label="Salsa Today Logo" role="presentation"></span>
+        </a>
+        <app-bottom-sheet-handle class="ml-auto"></app-bottom-sheet-handle>
+        <button
+          class="ml-auto"
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      </mat-toolbar>
+      <!-- Add Content Here -->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

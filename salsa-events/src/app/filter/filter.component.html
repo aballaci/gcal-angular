@@ -1,0 +1,21 @@
+<div id="filter">
+  <div class="row text-center  mb-sm-3">
+    <div class="col-md-12">
+      <div class="btn btn-primary filter col-md-2"
+           [class.active]="eventType === 'party'"
+           (click)="changeSelection.emit('party')">
+        Parties <i *ngIf="eventType === 'party'" class="fa fa-check-circle"></i>
+      </div>
+      <div class="btn btn-primary filter col-md-2"
+           [class.active]="eventType === 'workshop'"
+           (click)="changeSelection.emit('workshop')">
+        Workshops <i *ngIf="eventType === 'workshop'" class="fa fa-check-circle"></i>
+      </div>
+      <div class="btn btn-primary filter col-md-2"
+           [class.active]="eventType === 'kurs'"
+           (click)="changeSelection.emit('kurs')">
+        Kurse <i *ngIf="eventType === 'kurs'" class="fa fa-check-circle"></i>
+      </div>
+    </div>
+  </div>
+</div>

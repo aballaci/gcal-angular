@@ -1,0 +1,44 @@
+<div class="d-flex flex-wrap">
+<div *ngFor="let event of events" class="wrapper" (click)="eventClicked.emit({event: event})" [ngClass]="event.meta.event.type">
+    <div class="ev-container">
+      <div class="top" [ngStyle]="{'background-image':'url(' + event.meta.event.thumbnail + ')'}"></div>
+      <div class="bottom">
+          <div class="details">
+            <p><i class="fa fa-clock-o" style="color:#f44336; font-size: 16px"></i> {{event.start | date: 'HH:mm'}} Uhr</p>
+            <p *ngIf="event.meta.event?.location">
+              <i class="fa fa-map-marker" style="color:#4caf50; font-size: 16px; margin-left: 1.8px; margin-right: 5px"></i>{{(event.meta.event?.location | slice:0:20) + '...'}}
+            </p>
+            <h3 class="title" [ngClass]="{'cancelled': event.meta.event.status === 'cancelled'}">{{event.title}}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="inside">
+
+      <div class="icon" *ngIf="event.meta.event.status === 'cancelled'; else infoIcons">
+        <i class="material-icons text-danger">
+          error_outline
+        </i>
+      </div>
+      <ng-template #infoIcons>
+          <!-- logic && operator -->
+          <div class="icon" *ngIf="event.meta.event.type === 'party'">
+            <i class="fas fa-glass-martini text-success"></i>
+          </div>
+
+          <!-- logic && operator -->
+          <div class="icon" *ngIf="event.meta.event.type === 'workshop'">
+            <i class="fa fa-graduation-cap text-success"></i>
+          </div>
+      </ng-template>
+      <div class="contents cnd-txt">
+        <p style="color: #dc3545" *ngIf="event.meta.event.status === 'cancelled'">
+          ACHTUNG! Event abgesagt!
+        </p>
+        <p *ngIf="event.meta.event?.description">
+          {{ (event.meta.event?.description | slice:0:180) + '...'}}
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div *ngIf="event">
+  <div *ngIf="event.start">
+    <div *ngIf="sameDayEvent; else notSameDay">
+      <div>{{sameDayEventDate}}</div>
+      <div>{{sameDayEventTime}}</div>
+    </div>
+    <ng-template #notSameDay>
+      <div *ngIf="eventEndDate">
+        <div >{{eventStartDate}} -</div>
+        <div> {{eventEndDate}}</div>
+      </div>
+      <div *ngIf="!eventEndDate">
+        <div >{{eventDate}}</div>
+        <div >Open End</div>
+      </div>
+    </ng-template>
+  </div>
+</div>

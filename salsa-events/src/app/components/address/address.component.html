@@ -1,0 +1,12 @@
+<div class="address" *ngIf="address">
+  <div *ngIf="name !== address else justOneLine">
+    <div *ngIf="name" class="name">{{name}}</div>
+    <div *ngIf="strasse">{{strasse}}</div>
+    <div *ngIf="plz">{{plz}}</div>
+    <div *ngIf="stadt">{{stadt}}</div>
+    <div *ngIf="land">{{land}}</div>
+  </div>
+  <ng-template #justOneLine>
+    <div class="name">{{address | slice:0:120}}..</div>
+  </ng-template>
+</div>

@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="mt-2 mb-2">
+  <!--<div class="label-info mb-2">Ich suche nach:</div>-->
+  <mat-button-toggle-group name="kategorien" aria-label="Kategorien Auswahl">
+    <mat-button-toggle [@open-closed]="getTypeState(kat.party)" (click)="selectKategorie(kat.party)" value="{{kat.party}}">Party</mat-button-toggle>
+    <mat-button-toggle [@open-closed]="getTypeState(kat.kurs)" (click)="selectKategorie(kat.kurs)" value="{{kat.kurs}}">Kurs</mat-button-toggle>
+    <mat-button-toggle [@open-closed]="getTypeState(kat.workshop)" (click)="selectKategorie(kat.workshop)" value="{{kat.workshop}}">Workshop</mat-button-toggle>
+    <mat-button-toggle [@open-closed]="getTypeState(kat.festival)" (click)="selectKategorie(kat.festival)" value="{{kat.festival}}">Festival</mat-button-toggle>
+  </mat-button-toggle-group>
+  </div>
+
+<div *ngIf="eventType" class="filter-block">
+  <!--<div class="label label-info mb-2 mt-2">Wählen Sie bitte eine Datum aus:</div>-->
+  <mat-button-toggle-group name="datum" aria-label="Datum Auswahl">
+    <mat-button-toggle [@open-closed]="getDateTypeState(ndr.today)" value="today" (click)="selectDate(ndr.today)">Heute</mat-button-toggle>
+    <mat-button-toggle [@open-closed]="getDateTypeState(ndr.tomorrow)" value="tomorrow" (click)="selectDate(ndr.tomorrow)">Morgen</mat-button-toggle>
+    <mat-button-toggle [@open-closed]="getDateTypeState(ndr.this_weekend)" value="this_weekend" (click)="selectDate(ndr.this_weekend)">Dieses Wochenende</mat-button-toggle>
+    <mat-button-toggle [@open-closed]="getDateTypeState(ndr.this_week)" value="this_week" (click)="selectDate(ndr.this_week)">Diese Woche</mat-button-toggle>
+    <mat-button-toggle [@open-closed]="getDateTypeState(ndr.next_week)" value="next_week" (click)="selectDate(ndr.next_week)">Nächste Woche</mat-button-toggle>
+    <mat-button-toggle [@open-closed]="getDateTypeState(ndr.this_month)" value="this_month" (click)="selectDate(ndr.this_month)">Diesen Monat</mat-button-toggle>
+    <mat-button-toggle [@open-closed]="getDateTypeState(ndr.next_month)" value="next_month" (click)="selectDate(ndr.next_month)">Nächste Monat</mat-button-toggle>
+    <!--<mat-button-toggle value="custom_date" (click)="selectDate('custom_date')">Belibiges Datum</mat-button-toggle>-->
+  </mat-button-toggle-group>
+</div>
+
+
+
+<div *ngIf="showSubKategorien" class="mb-2 mt-2">
+  <!--<div class="label label-info mb-2 mt-2">Wählen Sie bitte ein Stil aus:</div>-->
+  <mat-button-toggle-group name="datum" aria-label="Datum Auswahl">
+    <mat-button-toggle  (click)="setSubKategorie(subKat.salsa_cubana)" value="{{subKat.salsa_cubana}}">Salsa Cubana</mat-button-toggle>
+    <mat-button-toggle  (click)="setSubKategorie(subKat.salsa_in_linee)" value="{{subKat.salsa_in_linee}}">Salsa In Linee</mat-button-toggle>
+    <mat-button-toggle  (click)="setSubKategorie(subKat.bachata)" value="{{subKat.bachata}}">Bachata</mat-button-toggle>
+    <mat-button-toggle  (click)="setSubKategorie(subKat.kizomba)" value="{{subKat.kizomba}}">Kizomba</mat-button-toggle>
+    <mat-button-toggle  (click)="setSubKategorie(subKat.rueda)" value="{{subKat.rueda}}">Rueda</mat-button-toggle>
+    <mat-button-toggle  (click)="setSubKategorie(subKat.son)" value="{{subKat.son}}">Son</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
+  <mat-button-toggle-group *ngIf="eventType && selectedDate && !showSubKategorien" name="weitereKategorien" aria-label="Weitere Kategorien">
+    <mat-button-toggle (click)="showWeitereKategorien()">Weitere Kategorien</mat-button-toggle>
+  </mat-button-toggle-group>
+  <mat-button-toggle-group class="mr-auto" aria-label="Ok">
+    <mat-button-toggle class="button-ok" (click)="ok()">Übernehmen</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>

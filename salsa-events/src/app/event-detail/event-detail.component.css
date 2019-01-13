@@ -1,0 +1,149 @@
+
+
+.workshop,  .workshop div.inside{
+  background-color: rgba(255, 255, 255, 0.36);
+}
+
+.party, .party div.inside{
+  background: rgba(255, 255, 255, 0.48);
+}
+
+
+
+.title{
+  width: 100%;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  font-size: medium;
+  margin-left: 5px;
+  text-transform: uppercase;
+}
+
+.cancelled{
+  text-decoration: line-through;
+  text-decoration-color: #dc3545;
+}
+
+.cancelled-info{
+  color: #dc3545;
+  font-size: medium;
+}
+
+.wrapper {
+  font-family: sans-serif;
+  flex-basis: 230px;
+  height: 300px;
+  min-height: 0;
+  font-size: 14px;
+  cursor:pointer;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0;
+  transform: scale(0.95);
+  transition: box-shadow 0.5s, transform 0.5s;
+}
+
+.wrapper p {
+  color: #606060;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: .025em;
+  line-height: 1.5em;
+}
+
+.wrapper:hover {
+  transform: scale(1);
+  box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
+}
+.wrapper .ev-container {
+  width: 100%;
+  height: 100%;
+}
+.wrapper .ev-container .top {
+  height: 70%;
+  width: 100%;
+  background: no-repeat top center;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+}
+.wrapper .ev-container .bottom {
+  width: 200%;
+  height: 20%;
+  transition: transform 0.5s;
+}
+.wrapper .ev-container .bottom.clicked {
+  transform: translateX(-50%);
+}
+.wrapper .ev-container .bottom h1 {
+  margin: 0;
+  padding: 0;
+}
+.wrapper .ev-container .bottom p {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper .ev-container .bottom .details {
+  padding: 10px;
+}
+
+.wrapper .inside {
+  z-index: 9;
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  border-radius: 0px 0px 200px 200px;
+  transition: all 0.5s, border-radius 2s, top 1s;
+  overflow: hidden;
+}
+.wrapper .inside .icon {
+  font-size: large;
+  position: absolute;
+  right: 85px;
+  top: 85px;
+  color: white;
+  opacity: 1;
+}
+.wrapper .inside:hover {
+  width: 100%;
+  right: 0;
+  top: 0;
+  border-radius: 0;
+  height: 70%;
+}
+.wrapper .inside:hover .icon {
+  opacity: 0;
+  right: 15px;
+  top: 15px;
+}
+.wrapper .inside:hover .contents {
+  opacity: 1;
+  transform: scale(1);
+  transform: translateY(0);
+}
+.wrapper .inside .contents {
+  padding: 5%;
+  opacity: 0;
+  transform: scale(0.5);
+  transform: translateY(-200%);
+  transition: opacity 0.2s, transform 0.8s;
+}
+
+.wrapper .inside .contents h1,
+.wrapper .inside .contents p,
+.wrapper .inside .contents table {
+  color: white;
+}
+.wrapper .inside .contents p {
+  font-size: 13px;
+}
+
+.highlight{
+  background-color: #ffeded;
+}

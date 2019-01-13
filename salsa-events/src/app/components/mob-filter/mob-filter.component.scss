@@ -1,0 +1,35 @@
+
+$mat-button-toggle-standard-padding: 0 !default;
+$mat-button-toggle-standard-height: 36px !default;
+$mat-button-toggle-standard-border-radius: 30px !default;
+
+.mat-button-toggle-standalone,
+.mat-button-toggle-group {
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+
+  .mat-button-toggle {
+    border: 1px solid #bfbfbf;
+    margin-right: 5px;
+    border-radius: $mat-button-toggle-standard-border-radius;
+    height: $mat-button-toggle-standard-height;
+    padding: $mat-button-toggle-standard-padding;
+  }
+
+}
+
+.filter-block{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.container {
+  min-height: 150px;
+}
+
+.button-ok{
+  background-color:
+  #28a745; color: #ffffff;
+  botton: 20px;
+}
+

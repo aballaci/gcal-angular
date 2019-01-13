@@ -1,5 +1,5 @@
 {
-  "name": "angular-calendar-angular-cli-example",
+  "name": "salsa-today",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -9,7 +9,11 @@
     "release": "ng build --configuration=production",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
+    "serve:ssr": "node dist/server.js",
+    "build:client-and-server-bundles": "ng build --prod && ng run angular-cli:server --output-hashing=none",
+    "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
   },
   "private": true,
   "dependencies": {
@@ -67,6 +71,8 @@
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "typescript": "3.1.6",
-    "webpack": "^4.23.1"
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.2.1"
   }
 }

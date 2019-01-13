@@ -125,10 +125,7 @@ registerLocaleData(localeDE);
     BottomSheetHandleComponent
   ],
   exports: [],
-  providers: [{
-    provide: HAMMER_GESTURE_CONFIG,
-    useClass: MyHammerConfig
-  },
+  providers: [
      {provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
     {
       provide: HTTP_INTERCEPTORS,

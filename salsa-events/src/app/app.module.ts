@@ -61,7 +61,7 @@ registerLocaleData(localeDE);
 // @ts-ignore
 @NgModule({
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'my-app'}),
     BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,

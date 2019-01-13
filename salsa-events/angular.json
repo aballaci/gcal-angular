@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-cli": {
+    "salsa-today": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -47,21 +47,29 @@
             }
           }
         },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/server",
+            "main": "src/main.server.ts",
+            "tsConfig": "src/tsconfig.server.json"
+          }
+        },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-cli:build"
+            "browserTarget": "salsa-today:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-cli:build:production"
+              "browserTarget": "salsa-today:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-cli:build"
+            "browserTarget": "salsa-today:build"
           }
         },
         "test": {
@@ -96,7 +104,7 @@
         }
       }
     },
-    "angular-cli-e2e": {
+    "salsa-today-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -105,7 +113,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "angular-cli:serve"
+            "devServerTarget": "salsa-today:serve"
           }
         },
         "lint": {
@@ -122,7 +130,7 @@
       }
     }
   },
-  "defaultProject": "angular-cli",
+  "defaultProject": "salsa-today",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

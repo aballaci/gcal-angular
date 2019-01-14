@@ -7,7 +7,9 @@ export class Routes {
 
     public eventController: EventController = new EventController();
 
-    dateCheck = [ check('start').exists({checkNull: true, checkFalsy: true})];
+    dateCheck = [ check('start').exists({checkNull: true, checkFalsy: true}).withMessage(
+        'the parameter start is required! ex: ?start=2019-01-01%200:00'
+    )];
 
     public routes(app: express.Application): void {
 
@@ -27,6 +29,10 @@ export class Routes {
 
         app.get('/event/:id', (req: Request, res: Response) => {
             this.eventController.getEventById(req, res);
+        })
+
+        app.post('/notify', (req: Request, res: Response) => {
+            this.eventController.handleNotification(req, res);
         })
     }
 }

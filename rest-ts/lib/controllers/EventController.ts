@@ -1,6 +1,9 @@
 import {model} from "mongoose";
 import {EventSchema} from "../model/Event";
 import { Request, Response } from 'express';
+import morgan from "morgan";
+
+let logger = morgan('combined')
 
 
 const  Event =  model('v_events', EventSchema);
@@ -37,11 +40,17 @@ export class EventController{
     }
 
     public getEventById(req: Request, res: Response){
-        Event.find({id: req.params['id']},(err, events) => {
+        const id = req.params['id'];
+        console.log('id:' + id);
+        Event.find({_id: id},(err, events) => {
             if(err){
                 res.send(err);
             }
             res.json(events);
         });
+    }
+
+    public handleNotification(req: Request, res: Response){
+
     }
 }

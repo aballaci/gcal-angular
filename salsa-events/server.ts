@@ -1,6 +1,7 @@
 // These are important and needed before anything else
 import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
+import {environment} from './src/environments/environment.prod';
 
 import { renderModuleFactory } from '@angular/platform-server';
 import { enableProdMode } from '@angular/core';
@@ -16,7 +17,8 @@ enableProdMode();
 const app = express();
 
 const PORT = process.env.PORT || 4000;
-const DIST_FOLDER = join(process.cwd(), 'dist');
+// const DIST_FOLDER = join(process.cwd(), 'dist');
+const DIST_FOLDER = environment.distFolder;
 
 // Our index.html we'll use as our template
 const template = readFileSync(join(DIST_FOLDER, 'browser', 'index.html')).toString();

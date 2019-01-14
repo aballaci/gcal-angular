@@ -1,14 +1,20 @@
 // lib/app.ts
 import express from "express";
 import * as bodyParser from "body-parser";
+import {Routes} from './routes/Routes';
+import mongoose = require('mongoose');
 
 class App {
 
     public app: express.Application;
 
+    public routePrv: Routes = new Routes();
+
     constructor() {
         this.app = express();
         this.config();
+        this.routePrv.routes(this.app);
+        mongoose.connect('mongodb://localhost/salsa-events', { useNewUrlParser: true });
     }
 
     private config(): void{

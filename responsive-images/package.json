@@ -1,0 +1,21 @@
+{
+  "name": "responsive-images",
+  "version": "1.0.0",
+  "description": "image processing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "author": "armand ballaci",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-cwebp": "^2.1.1",
+    "grunt-responsive-images": "^1.10.1"
+  }
+}

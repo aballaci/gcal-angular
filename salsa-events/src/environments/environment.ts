@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  serviceUrl: 'http://localhost:8090/api/filtered/events',
+  serviceUrl: 'http://localhost:3000/event',
   mobileVersionUrl: 'https://iohk.de/mob/',
   distFolder: './dist'
 };

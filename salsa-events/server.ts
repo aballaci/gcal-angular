@@ -28,6 +28,8 @@ const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/mai
 
 const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader');
 
+// app.use('/img', express.static('/var/www/html/img'));
+
 app.engine('html', (_, options, callback) => {
   renderModuleFactory(AppServerModuleNgFactory, {
     // Our index.html

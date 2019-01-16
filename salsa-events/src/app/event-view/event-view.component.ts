@@ -154,5 +154,19 @@ export class EventViewComponent implements OnInit {
     const fileName = this.icsService.getIcsFileName(this.event.title);
     saveAs(blob, fileName);
   }
+
+  getImageUrl(i: number): string {
+    console.log('called with index: ' + i);
+    const event: CalendarEvent = this.events[i];
+    const gcEvent = event.meta.event;
+    const fileId = gcEvent.attachments[0].fileId;
+    const fileName = gcEvent.attachments[0].title;
+    const extenstion = fileName.split('.')[1];
+    const imgSrcArr = [];
+
+    imgSrcArr.push('/img/' + fileId + '-sm.' + extenstion + ' 1x');
+    imgSrcArr.push('/img/' + fileId + '-md.' + extenstion);
+    imgSrcArr.push('/img/' + fileId + '-lg.' + extenstion);
+    return '';}
 }
 

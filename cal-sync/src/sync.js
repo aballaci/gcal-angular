@@ -4,6 +4,7 @@ var calendarService = require('./calendar.service');
 var dbService = require('./db.service');
 var notifier = require('./event.mgmt');
 var constants = require('./event.mgmt').constants;
+var downloader = require('./imgproc/image-downloader')
 
 var onCalendarsDbRes = ( e ) => {
   console.log('onCalendarsDbRes');
@@ -36,6 +37,17 @@ var onEventsApiRes = ( event ) => {
   console.log('onEventsApiRes' + event);
   dbService.insertItems(event.calendarId, event.items);
   dbService.updateCalendarSyncToken({ id:event.calendarId, syncToken: event.syncToken });
+  downloadImages(event);
+}
+
+var downloadImages = (event ) => {
+  console.log('downloadImages called: ' +  event.items.length);
+  event.items.forEach(function ( item ) {
+    downloader.getImage(item.attachments[0].fileId, item.attachments[0].title, function () {
+      console.log('downloade image:' + item.attachments[0].title);
+    })
+  });
+
 }
 
 var onCalTokenDbRes = ( token ) => {

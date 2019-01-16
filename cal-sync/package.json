@@ -1,8 +1,8 @@
 {
   "name": "cal-sync",
-  "version": "1.0.0",
-  "description": "Calendar sync for salsa events",
-  "main": "index.js",
+  "version": "1.0.1",
+  "description": "Google Calendar Sync",
+  "main": "src/sync.js",
   "scripts": {
     "test": "mocha"
   },
@@ -14,17 +14,15 @@
   "author": "aballaci",
   "license": "ISC",
   "dependencies": {
-    "@types/chai": "^4.1.7",
-    "@types/chai-datetime": "0.0.32",
     "@types/gapi": "0.0.36",
     "@types/node": "^10.12.5",
     "axios": "^0.18.0",
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
     "calendar-utils": "^0.2.2",
-    "chai-datetime": "^1.5.0",
     "express": "^4.16.4",
     "flat": "^4.1.0",
+    "image-downloader": "^3.4.2",
     "jsonq": "^1.2.0",
     "mongodb": "^3.1.8",
     "mongoose": "^5.3.4",
@@ -33,13 +31,9 @@
   "devDependencies": {
     "@types/gapi": "0.0.36",
     "@types/gapi.client.calendar": "^3.0.0",
-    "@types/mocha": "^5.2.5",
     "@types/mongodb": "^3.1.14",
     "@types/mongoose": "^5.3.1",
-    "babel-plugin-transform-optional-chaining": "^7.0.0-beta.3",
-    "chai": "^4.2.0",
     "googleapis": "^27.0.0",
-    "mocha": "^5.2.0",
     "typescript": "^3.1.6"
   }
 }

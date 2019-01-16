@@ -31,13 +31,15 @@
     "mongoose": "^5.4.3",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.9",
-    "typescript-logging": "^0.6.3"
+    "typescript-logging": "^0.6.3",
+    "webpack": "^4.28.4"
   },
   "devDependencies": {
     "@types/mongodb": "^3.1.18",
     "@types/mongoose": "^5.3.7",
     "ts-node-dev": "^1.0.0-pre.32",
     "typescript": "^3.2.2",
-    "typescript-tools": "^0.3.1"
+    "typescript-tools": "^0.3.1",
+    "webpack-cli": "^3.2.1"
   }
 }

@@ -4,7 +4,7 @@ module.exports = {
     mode: 'development',
     target: 'node',
     entry: {
-        app: './lib/server.ts'
+        app: './src/server.ts'
     },
     devtool: 'inline-source-map',
     module: {

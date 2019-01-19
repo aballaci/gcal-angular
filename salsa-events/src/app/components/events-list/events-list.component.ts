@@ -7,11 +7,13 @@ import {DeviceDetectorService} from 'ngx-device-detector';
 import {EventService} from '../../services/event.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DateRange, Message, MessageService, NaturalDateRange, Params} from '../../services/message.service';
+import {inout} from '../../animations/animations';
 
 @Component({
   selector: 'app-events-list',
   templateUrl: './events-list.component.html',
-  styleUrls: ['./events-list.component.scss']
+  styleUrls: ['./events-list.component.scss'],
+  animations: [inout]
 })
 export class EventsListComponent implements OnInit {
 
@@ -24,6 +26,8 @@ export class EventsListComponent implements OnInit {
   isMobile: boolean;
 
   message: Message;
+
+  noResults = false;
 
   show = false;
 
@@ -64,9 +68,11 @@ export class EventsListComponent implements OnInit {
     this.eventService.fetchEvents(this.startDate, this.endDate, this.eventType, this.eventSubType, short)
       .subscribe(events => {
         if (events.length === 0) {
-          this.router.navigate(['/no-results']);
+          // this.router.navigate(['/no-results']);
+          this.noResults = true;
         } else {
           this.events = events;
+          this.noResults = false;
         }
       });
   }

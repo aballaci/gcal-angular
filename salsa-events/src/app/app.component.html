@@ -6,10 +6,7 @@
   </div>
 </ng-template>
 <app-loader></app-loader>
-<app-mob-menu-bottom [@scrollAnimation]="state" *ngIf="isMobile"></app-mob-menu-bottom>
+<app-mob-menu-bottom [@inout] *ngIf="isMobile && state === 'show'"></app-mob-menu-bottom>
 <div class="content-wrapper">
   <router-outlet></router-outlet>
-  <!--<div class="footer">-->
-    <!--<img src="../assets/ico.png">-->
-  <!--</div>-->
 </div>

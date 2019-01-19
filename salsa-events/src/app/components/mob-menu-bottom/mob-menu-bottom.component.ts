@@ -3,11 +3,13 @@ import {Kategorie, NaturalDateRange, SubKategorie} from '../../services/message.
 import {MatBottomSheetRef} from '@angular/material';
 import {BottomSheetComponent} from '../bottom-sheet/bottom-sheet.component';
 import {Params, Router} from '@angular/router';
+import {inout} from '../../animations/animations';
 
 @Component({
   selector: 'app-mob-menu-bottom',
   templateUrl: './mob-menu-bottom.component.html',
-  styleUrls: ['./mob-menu-bottom.component.scss']
+  styleUrls: ['./mob-menu-bottom.component.scss'],
+  animations: [inout]
 })
 export class MobMenuBottomComponent implements OnInit {
 
@@ -18,6 +20,8 @@ export class MobMenuBottomComponent implements OnInit {
   selectedDate: NaturalDateRange;
 
   eventSubType: SubKategorie;
+
+  level = 'first';
 
   // enums
   kat = Kategorie;
@@ -32,36 +36,45 @@ export class MobMenuBottomComponent implements OnInit {
   }
 
   selectKategorie(kategorie: Kategorie) {
-    this.eventType = (this.eventType !== kategorie) ? kategorie : undefined;
-    this.router.navigate(['/events'], {queryParams: {'date': 'this_month', 'eventType': this.eventType}});
+    this.eventType = kategorie;
+    this.level = 'second';
+    // this.router.navigate(['/events'], {queryParams: {'date': 'this_month', 'eventType': this.eventType}});
   }
 
+
   selectDate(date: NaturalDateRange) {
-    this.selectedDate = (this.selectedDate !== date) ? date : undefined;
-    console.log('selectDate: '  + this.selectedDate + ' eventType: ' + this.eventType);
-    if (this.eventType === Kategorie.party) {
-      this.router.navigate(['/home'], {queryParams: {'date': date, 'eventType': Kategorie.party}});
-      this.close();
+    this.selectedDate = date;
+    if (this.eventSubType) {
+      this.ok();
+    } else {
+      this.level = 'third';
     }
+  }
+
+  resetSelection() {
+    this.selectedDate = this.eventType = this.eventSubType = undefined;
   }
 
   close() {
     event.preventDefault();
   }
 
-  showWeitereKategorien() {
-    this.showSubKategorien = !this.showSubKategorien;
-  }
-
   setSubKategorie(eventSubType: SubKategorie) {
     this.eventSubType = eventSubType;
-    this.ok();
+    if (this.selectedDate) {
+      this.ok();
+    } else {
+      this.level = 'third';
+    }
   }
 
   ok() {
+    console.log('in OK');
     const params: Params = {};
     if (this.selectedDate) {
       params['date'] = this.selectedDate;
+    } else {
+      params['date'] = NaturalDateRange.this_month;
     }
     if (this.eventType) {
       params['eventType'] = this.eventType;
@@ -73,7 +86,9 @@ export class MobMenuBottomComponent implements OnInit {
       console.error('empty params for the call!!');
       return;
     }
-    this.router.navigate(['/home'], {queryParams: params});
+    this.resetSelection();
+    this.level = 'first';
+    this.router.navigate(['/events'], {queryParams: params});
     this.close();
   }
 

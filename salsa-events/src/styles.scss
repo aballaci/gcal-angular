@@ -29,7 +29,7 @@ $salsa-app-theme: mat-light-theme($salsa-app-primary, $salsa-app-accent, $salsa-
 @import '~material-bottom-nav';
 
 .bottom-nav {
-  @include bottom-nav($background-color: #a81212, $active-color: #ffffff, $inactive-color: #E0E0E0, $hide-inactive-labels: false);
+  @include bottom-nav($background-color: #a81212, $active-color: #ffffff, $inactive-color: yellow, $hide-inactive-labels: false);
 }
 
 

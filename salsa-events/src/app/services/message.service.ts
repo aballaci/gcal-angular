@@ -31,6 +31,7 @@ export enum Kategorie {
 
 
 export enum SubKategorie {
+  salsa = 'salsa',
   salsa_cubana = 'salsa_cubana',
   rueda = 'rueda' ,
   salsa_in_linee = 'salsa_in_linee',
@@ -40,7 +41,8 @@ export enum SubKategorie {
   cha_cha = 'cha_cha',
   merenuge = 'merenuge',
   reggaeton = 'reggaeton',
-  son = 'son'
+  son = 'son',
+  other = 'other',
 }
 
 export enum NaturalDateRange {
@@ -93,7 +95,7 @@ export class MessageService {
     this.subject.next( message );
   }
 
-  sendEvent(event: CalendarEvent){
+  sendEvent(event: CalendarEvent) {
     this.subject.next(event);
   }
 

@@ -1,10 +1,13 @@
 .bottom-nav {
+  a {
+    color: #ffffff;
+  }
+  a.active{
+  }
   z-index: 2;
 }
 
 .bottom-nav__action {
-  &:focus, &:hover {
     text-decoration: none;
     color: #ffffff;
-  }
 }

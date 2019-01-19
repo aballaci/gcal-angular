@@ -3,22 +3,14 @@ import {DeviceDetectorService} from 'ngx-device-detector';
 import {CdkScrollable, ScrollDispatcher, ScrollingModule} from '@angular/cdk/scrolling';
 import {Observable, Subject, Subscription} from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
 import {RouterOutlet, Scroll} from '@angular/router';
-import {routeAnimations, scrollAnimation} from './animations/animations';
-import {ModalManager} from 'ngb-modal';
+import {inout} from './animations/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations: [scrollAnimation, routeAnimations],
+  animations: [inout],
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class AppComponent implements OnInit, OnDestroy {
@@ -31,8 +23,6 @@ export class AppComponent implements OnInit, OnDestroy {
   state = 'show';
 
   debounceTime = 300;
-
-  debouncedScroll = new EventEmitter();
 
   ngOnInit(): void {
     if ( this.isMobile ) {
@@ -52,10 +42,11 @@ export class AppComponent implements OnInit, OnDestroy {
         .pipe(debounceTime(this.debounceTime))
         .subscribe((scrollEvent: CdkScrollable) => {
         if (scrollEvent) {
+          console.log('cdkscroll...');
           const offset = scrollEvent.measureScrollOffset('top');
           const direction = (offset > lastOffset) ? 'DOWN' : 'UP';
           if (lastDirection === 'DOWN' && direction === 'UP') {
-            // console.log('turning up --> show lastOffset: ' + lastOffset + ' offset:' + offset);
+            console.log('turning up --> show lastOffset: ' + lastOffset + ' offset:' + offset);
             this.zone.run(() => {
               this.state = 'show';
             });
@@ -70,10 +61,6 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       });
     }
-  }
-
-  prepareRoute(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 
   @HostListener('window:scroll', ['$event'])

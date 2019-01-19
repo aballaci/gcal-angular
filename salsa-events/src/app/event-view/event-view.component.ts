@@ -12,8 +12,7 @@ import {IcsService} from '../services/ics.service';
 @Component({
   selector: 'app-event-view',
   templateUrl: './event-view.component.html',
-  styleUrls: ['./event-view.component.css'],
-  animations: [routeAnimations]
+  styleUrls: ['./event-view.component.css']
 })
 export class EventViewComponent implements OnInit {
 
@@ -33,7 +32,6 @@ export class EventViewComponent implements OnInit {
 
   private modalRef;
 
-  exp = '';
 
   constructor(
     private deviceService: DeviceDetectorService,
@@ -41,12 +39,6 @@ export class EventViewComponent implements OnInit {
     private icsService: IcsService,
     private modal: ModalManager) {
     this.isMobile = this.deviceService.isMobile();
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      console.log(event);
-      this.goAnimate();
-    });
   }
 
   indexTrackFn = (index: number) => index;
@@ -87,17 +79,10 @@ export class EventViewComponent implements OnInit {
     map.scrollIntoView({behavior: 'smooth'});
   }
 
-  goAnimate() {
-    this.exp = 'goAnimate';
-  }
-
   toJsonLd(event: CalendarEvent) {
     const gcEvent = event.meta.event;
     let jsonld = {};
     try {
-      // @ts-ignore
-      // @ts-ignore
-      // @ts-ignore
       jsonld = {
         '@context': 'http://www.schema.org',
         '@type': 'DanceEvent',
@@ -167,6 +152,7 @@ export class EventViewComponent implements OnInit {
     imgSrcArr.push('/img/' + fileId + '-sm.' + extenstion + ' 1x');
     imgSrcArr.push('/img/' + fileId + '-md.' + extenstion);
     imgSrcArr.push('/img/' + fileId + '-lg.' + extenstion);
-    return '';}
+    return '';
+  }
 }
 

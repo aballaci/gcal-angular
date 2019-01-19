@@ -57,7 +57,11 @@ export class EventsListComponent implements OnInit {
   }
 
   fetchEvents(): void {
-    this.eventService.fetchEvents(this.startDate, this.endDate, this.eventType, this.eventSubType)
+    let short: string;
+    if (this.isMobile) {
+      short = 'true';
+    }
+    this.eventService.fetchEvents(this.startDate, this.endDate, this.eventType, this.eventSubType, short)
       .subscribe(events => {
         if (events.length === 0) {
           this.router.navigate(['/no-results']);

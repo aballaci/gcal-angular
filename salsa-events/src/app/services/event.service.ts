@@ -22,7 +22,7 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  fetchEvents(startDate: Date, endDate: Date, eventType?: string, eventSubType?: string): Observable<CalendarEvent[]> {
+  fetchEvents(startDate: Date, endDate: Date, eventType?: string, eventSubType?: string, short?: string): Observable<CalendarEvent[]> {
     let params = new HttpParams()
       .set(
         'start',
@@ -41,6 +41,12 @@ export class EventService {
     if (eventSubType) {
       params = params.set(
         'eventSubType', eventSubType
+      );
+    }
+
+    if (short && short === 'true') {
+      params = params.set(
+        'short', short
       );
     }
 

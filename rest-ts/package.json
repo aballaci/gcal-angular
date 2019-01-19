@@ -8,7 +8,7 @@
     "start": "nodemon ./dist/rest.bundle.js",
     "prod": "npm run build && npm run start",
     "wpstart": "webpack-dev-server --mode development",
-    "build": "webpack --env.production"
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "mongoose": "^5.4.3",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.9",
+    "request": "^2.88.0",
     "typescript-logging": "^0.6.3",
     "webpack": "^4.28.4"
   },

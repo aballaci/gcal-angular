@@ -8,6 +8,8 @@ import {EventService} from '../../services/event.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DateRange, Message, MessageService, NaturalDateRange, Params} from '../../services/message.service';
 import {inout} from '../../animations/animations';
+import {MatSnackBar} from '@angular/material';
+import {NoResultsComponent} from '../no-results/no-results.component';
 
 @Component({
   selector: 'app-events-list',
@@ -27,8 +29,6 @@ export class EventsListComponent implements OnInit {
 
   message: Message;
 
-  noResults = false;
-
   show = false;
 
   constructor(
@@ -36,7 +36,8 @@ export class EventsListComponent implements OnInit {
     private deviceService: DeviceDetectorService,
     private messageService: MessageService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {
     this.isMobile = this.deviceService.isMobile();
   }
@@ -46,12 +47,13 @@ export class EventsListComponent implements OnInit {
     this.route
       .queryParamMap
       .subscribe(params => {
-        const dateRange = params.get('date');
-        if (dateRange) {
-          const range = DateRange.getDateRange(NaturalDateRange[dateRange]);
-          console.log('dateRange: ' + JSON.stringify(range));
-          this.startDate = range.start;
-          this.endDate = range.end;
+        const start = params.get('start');
+        const end = params.get('end');
+        if (start) {
+          this.startDate = new Date( start );
+        }
+        if (end) {
+          this.endDate = new Date( end );
         }
         this.eventType = params.get('eventType') || undefined;
         this.eventSubType = params.get('eventSubType') || undefined;
@@ -68,11 +70,10 @@ export class EventsListComponent implements OnInit {
     this.eventService.fetchEvents(this.startDate, this.endDate, this.eventType, this.eventSubType, short)
       .subscribe(events => {
         if (events.length === 0) {
-          // this.router.navigate(['/no-results']);
-          this.noResults = true;
+          console.log('no results snackbar');
+          this.snackBar.openFromComponent(NoResultsComponent, {duration: 2000, verticalPosition: 'bottom'});
         } else {
           this.events = events;
-          this.noResults = false;
         }
       });
   }

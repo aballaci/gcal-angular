@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  serviceUrl: 'be/event',
+  serviceUrl: 'be',
   distFolder: '/var/www/html/dist'
 };

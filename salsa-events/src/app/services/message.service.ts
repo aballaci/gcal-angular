@@ -18,7 +18,7 @@ import { CalendarEvent } from 'angular-calendar';
 
 export interface DateRange {
   start: Date;
-  end: Date;
+  end?: Date;
 }
 
 export enum Kategorie {

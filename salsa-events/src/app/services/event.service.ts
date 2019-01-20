@@ -51,14 +51,14 @@ export class EventService {
     }
 
     return this.http
-      .get<Event[]>(environment.serviceUrl, { params })
+      .get<Event[]>(`${environment.serviceUrl}/event`, { params })
       .pipe(
         map(events => this.toCalendarEvent(events))
       );
   }
 
   getEventById(id: string) {
-    const url = `${environment.serviceUrl}/${id}`;
+    const url = `${environment.serviceUrl}/event/${id}`;
     return this.http.get<Event[]>(url)
       .pipe(
         map(events => this.toCalendarEvent(events))
@@ -78,5 +78,31 @@ export class EventService {
       };
       return e;
     });
+  }
+
+  fetchEventsVector(startDate: Date, endDate: Date, eventType?: string, eventSubType?: string): Observable<[]> {
+    let params = new HttpParams()
+      .set(
+        'start',
+        format(startDate, 'YYYY-MM-DD H:mm')
+      ).set(
+        'end',
+        format(endDate, 'YYYY-MM-DD H:mm')
+      );
+
+    if (eventType) {
+      params = params.set(
+        'type', eventType
+      );
+    }
+
+    if (eventSubType) {
+      params = params.set(
+        'eventSubType', eventSubType
+      );
+    }
+
+    return this.http
+      .get<[]>(`${environment.serviceUrl}/event-vector`, { params });
   }
 }

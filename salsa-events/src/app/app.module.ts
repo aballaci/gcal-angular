@@ -37,7 +37,13 @@ import {
   MatListModule,
   MatBottomSheetModule,
   MatChipsModule,
-  MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, MatButtonToggleModule, MatLabel, MatFormFieldModule, MatExpansionModule, MatRippleModule
+  MAT_BOTTOM_SHEET_DEFAULT_OPTIONS,
+  MatButtonToggleModule,
+  MatLabel,
+  MatFormFieldModule,
+  MatExpansionModule,
+  MatRippleModule,
+  MatDatepickerModule, MatNativeDateModule, MAT_DATE_LOCALE, MatInputModule, MatSnackBarModule
 } from '@angular/material';
 import {MyHammerConfig} from './my-hammer.config';
 import { BottomSheetComponent } from './components/bottom-sheet/bottom-sheet.component';
@@ -89,7 +95,12 @@ registerLocaleData(localeDE);
     MatChipsModule,
     ScrollingModule,
     MatRippleModule,
-    NgxJsonLdModule
+    NgxJsonLdModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatSnackBarModule
   ],
   declarations: [
     AppComponent,
@@ -127,6 +138,7 @@ registerLocaleData(localeDE);
   exports: [],
   providers: [
      {provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
+    {provide: MAT_DATE_LOCALE, useValue: 'de-DE'},
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptorService,

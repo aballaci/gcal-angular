@@ -61,8 +61,8 @@ export class MobMenuBottomComponent implements OnInit {
     if (this.eventSubType) {
       this.ok();
     } else {
-      console.log('setting the third level');
-      this.level = 'third';
+      console.log('setting the second level');
+      this.level = 'second';
     }
   }
 
@@ -81,7 +81,7 @@ export class MobMenuBottomComponent implements OnInit {
     if (this.selectedDate) {
       this.ok();
     } else {
-      this.level = 'third';
+      this.level = 'second';
     }
   }
 

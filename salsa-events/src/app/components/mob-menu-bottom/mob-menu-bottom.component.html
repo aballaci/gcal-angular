@@ -38,29 +38,6 @@
 </div>
 
 <div *ngIf="level === 'second'"  >
-  <nav [@inout] class="bottom-nav">
-    <a  class="bottom-nav__action" (click)="level='stil'">
-      <svg class="bottom-nav__icon" viewBox="0 0 24 24">
-        <path d="M3 4l9 16 9-16H3zm3.38 2h11.25L12 16 6.38 6z"/>
-      </svg>
-      <span class="bottom-nav__label">Stil Wälen</span>
-    </a>
-    <a [@inout] class="bottom-nav__action" mat-ripple (click)="ok()">
-      <svg class="bottom-nav__icon" viewBox="0 0 24 24">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-      </svg>
-      <span class="bottom-nav__label">Ok</span>
-    </a>
-    <a [@inout] class="bottom-nav__action" (click)="loadEventsVector()">
-      <svg class="bottom-nav__icon" viewBox="0 0 24 24">
-        <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
-      </svg>
-      <span class="bottom-nav__label">Datum Wälen</span>
-    </a>
-  </nav>
-</div>
-
-<div *ngIf="level === 'third'"  >
   <nav class="bottom-nav">
     <a [@inout]  class="bottom-nav__action" (click)="level='stil'" *ngIf="!eventSubType">
       <svg class="bottom-nav__icon" viewBox="0 0 24 24">
@@ -83,19 +60,19 @@
   </nav>
 </div>
 
-<div *ngIf="level === 'stil'">
+<div class="" *ngIf="level === 'stil'">
   <nav class="bottom-nav">
     <a  [@inout] class="bottom-nav__action" mat-ripple (click)="setSubKategorie(subKat.salsa_in_linee)">
-      <span class="bottom-nav__label">S. linee</span>
+      <span class="bottom-nav__label no-icons">S.linee</span>
     </a>
     <a  [@inout] class="bottom-nav__action" mat-ripple (click)="setSubKategorie(subKat.salsa_cubana)">
-      <span class="bottom-nav__label">S. Cuba</span>
+      <span class="bottom-nav__label no-icons">S.Cuba</span>
     </a>
     <a  [@inout] class="bottom-nav__action" (click)="setSubKategorie(subKat.bachata)">
-      <span class="bottom-nav__label">Bachata</span>
+      <span class="bottom-nav__label no-icons">Bachata</span>
     </a>
     <a  [@inout] class="bottom-nav__action" (click)="setSubKategorie(subKat.kizomba)">
-      <span class="bottom-nav__label">Kizomba</span>
+      <span class="bottom-nav__label no-icons">Kizomba</span>
     </a>
     <a  [@inout] class="bottom-nav__action" (click)="level='stil-more'">
       <svg class="bottom-nav__icon" viewBox="0 0 24 24">
@@ -108,21 +85,16 @@
 <div *ngIf="level === 'stil-more'">
   <nav class="bottom-nav">
     <a  [@inout] class="bottom-nav__action" mat-ripple (click)="setSubKategorie(subKat.rueda)">
-      <span class="bottom-nav__label">Rueda</span>
+      <span class="bottom-nav__label no-icons">Rueda</span>
     </a>
     <a  [@inout] class="bottom-nav__action" (click)="setSubKategorie(subKat.son)">
-      <span class="bottom-nav__label">Son</span>
+      <span class="bottom-nav__label no-icons">Son</span>
     </a>
     <a  [@inout] class="bottom-nav__action" (click)="setSubKategorie(subKat.cha_cha)">
-      <span class="bottom-nav__label">Cha Cha</span>
+      <span class="bottom-nav__label no-icons">Cha Cha</span>
     </a>
     <a  [@inout] class="bottom-nav__action" (click)="setSubKategorie(subKat.reggaeton)">
-      <span class="bottom-nav__label">Reggaeton</span>
-    </a>
-    <a  [@inout] class="bottom-nav__action" (click)="level='stil'">
-      <svg class="bottom-nav__icon" viewBox="0 0 24 24">
-        <path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/>
-      </svg>
+      <span class="bottom-nav__label no-icons">Reggaeton</span>
     </a>
   </nav>
 </div>
@@ -130,16 +102,13 @@
 <div *ngIf="level === 'datum'">
   <nav class="bottom-nav">
     <a [@inout]  class="bottom-nav__action" mat-ripple (click)="selectDate(ndr.today)">
-      <span class="bottom-nav__label">Heute</span>
+      <span class="bottom-nav__label no-icons">Heute</span>
     </a>
     <a [@inout]  class="bottom-nav__action" (click)="selectDate(ndr.tomorrow)">
-      <span class="bottom-nav__label">Morgen</span>
+      <span class="bottom-nav__label no-icons">Morgen</span>
     </a>
-    <a [@inout] class="bottom-nav__action" (click)="selectDate(ndr.this_weekend)">
-      <span class="bottom-nav__label">Dieses WE</span>
-    </a>
-    <a [@inout] class="bottom-nav__action" (click)="selectDate(ndr.next_week)">
-      <span class="bottom-nav__label">Nechste W</span>
+    <a [@inout] class="bottom-nav__action no-icons" (click)="selectDate(ndr.this_weekend)">
+      <span class="bottom-nav__label no-icons">d. We</span>
     </a>
     <a [@inout] mat-ripple class="bottom-nav__action" (click)="picker.open()">
       <svg class="bottom-nav__icon" viewBox="0 0 24 24">

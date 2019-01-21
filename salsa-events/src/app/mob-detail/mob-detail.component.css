@@ -75,8 +75,8 @@ img{
 }
 
 .tag{
-  border-radius: 10px;
-  font-size: medium;
+  border-radius: 20px;
+  border: 1px solid rgba(191, 191, 191, .3);
 }
 
 .button-to-calendar{

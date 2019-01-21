@@ -1,10 +1,28 @@
 .bottom-nav {
+  a {
+    color: #ffffff;
+  }
+  a.active{
+  }
   z-index: 2;
+  min-height: 50px;
 }
 
 .bottom-nav__action {
-  &:focus, &:hover {
     text-decoration: none;
     color: #ffffff;
-  }
 }
+
+.datepicker{
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: -999px;
+  right: -999px;
+}
+
+.no-icons.bottom-nav__label{
+  font-size: 16px;
+}
+
+

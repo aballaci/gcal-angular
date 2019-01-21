@@ -27,6 +27,14 @@ export class Routes {
             this.eventController.getEvents(req, res);
         })
 
+        app.get('/event-vector', this.dateCheck , (req: Request, res: Response) => {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(422).json({ errors: errors.array() });
+            }
+            this.eventController.getEventsVector(req, res);
+        })
+
         app.get('/event/:id', (req: Request, res: Response) => {
             this.eventController.getEventById(req, res);
         })

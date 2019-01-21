@@ -29,7 +29,7 @@ $salsa-app-theme: mat-light-theme($salsa-app-primary, $salsa-app-accent, $salsa-
 @import '~material-bottom-nav';
 
 .bottom-nav {
-  @include bottom-nav($background-color: #a81212, $active-color: #ffffff, $inactive-color: #E0E0E0, $hide-inactive-labels: false);
+  @include bottom-nav($background-color: #a81212, $active-color: #ffffff, $inactive-color: yellow, $hide-inactive-labels: false);
 }
 
 
@@ -258,6 +258,7 @@ body::-webkit-scrollbar-thumb:window-inactive {
 @media (max-width: 576px) {
   #bg{
     display: none;
+    max-width: 20%;
   }
   body{
     background-color: rgb(255, 255, 255);
@@ -284,3 +285,43 @@ button:focus {
 .sidenav-overlay {
   z-index: 2;
 }
+
+.mat-snack-bar-container{
+  margin-bottom: 70px!important;
+  background-color: #ffffff;
+  border-left: 4px solid #a81212;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px;
+  font-size: medium;
+  color: #908b8b;
+}
+
+/** mobile calendar custom
+
+.evt{
+  // background-color: #ffc1071c;
+  // border-radius: 100%;
+}
+
+.badge-1{
+  position: absolute;
+  &:after{
+    position: relative;
+    background-color: rgba(27, 30, 33, 0.23);
+    content: '1';
+    width: 10px;
+    height: 10px;
+    right: -23px;
+    top: -7px;
+    border-radius: 100%;
+    color: #ffffff;
+    font-size: x-small;
+    display: block;
+    line-height: 10px;
+  }
+}
+
+.badge-2{
+  background-color: green;
+}
+*/

@@ -34,22 +34,14 @@ export const scrollAnimation = trigger('scrollAnimation', [
   })),
   transition('show<=>hide', animate('200ms linear')),
 ]);
-//
-// export const enterAnimation = trigger('showItem', [
-//   transition('* <=> EventsPage',
-//   query(
-//     ':enter.item > *',
-//     [
-//       style({
-//         transform: 'translateY(-3%)',
-//         opacity: 0,
-//         position: 'static'
-//       }),
-//       animate(
-//         '0.5s ease-in-out',
-//         style({ transform: 'translateY(0%)', opacity: 1 })
-//       )
-//     ],
-//     { optional: true }
-//   ))
-// ]);
+
+
+export const inout = trigger('inout', [
+  transition(':enter', [
+    style({ opacity: 0 }),
+    animate('0.3s', style({ opacity: 1 })),
+  ]),
+  transition(':leave', [
+    animate('0.3s', style({ opacity: 0 }))
+  ])
+])

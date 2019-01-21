@@ -50,7 +50,8 @@
   width: 100%;
 }
 
-.workshop,  .workshop div.inside{
+.workshop {
+  fill: #ff9800;
 }
 
 .party, .party div.inside{

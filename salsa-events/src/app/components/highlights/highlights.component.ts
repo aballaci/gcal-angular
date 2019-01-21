@@ -30,7 +30,12 @@ export class HighlightsComponent implements OnInit {
   }
 
   fetchEvents(): void {
-    this.eventService.fetchEvents(this.startDate, this.endDate, Kategorie.highlight)
+    let short = 'false';
+    if (this.isMobile) {
+      short = 'true';
+      console.log('requiring short version...');
+    }
+    this.eventService.fetchEvents(this.startDate, this.endDate, Kategorie.highlight, null, short)
       .subscribe(events => {
         this.events = events.filter(x => x.meta.event.status === 'confirmed');
       });

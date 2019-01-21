@@ -1,36 +1,124 @@
-<nav class="bottom-nav">
-  <a class="bottom-nav__action" routerLink="home" routerLinkActive="bottom-nav__action--active">
-    <svg class="bottom-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path
-        d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/>
-    </svg>
-    <span class="bottom-nav__label">Heiß</span>
-  </a>
-  <a class="bottom-nav__action" (click)="selectKategorie(kat.party)" routerLink="party" routerLinkActive="bottom-nav__action--active">
-    <svg class="bottom-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path d="M21 5V3H3v2l8 9v5H6v2h12v-2h-5v-5l8-9zM7.43 7L5.66 5h12.69l-1.78 2H7.43z"/>
-    </svg>
-    <span class="bottom-nav__label">Party</span>
-  </a>
-  <a class="bottom-nav__action" (click)="selectKategorie(kat.kurs)" routerLink="kurs" routerLinkActive="bottom-nav__action--active">
-    <svg class="bottom-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
-    </svg>
-    <span class="bottom-nav__label">Kurse</span>
-  </a>
+<div *ngIf="level === 'first'">
+  <nav class="bottom-nav">
+    <a [@inout] class="bottom-nav__action" routerLink="home" routerLinkActive="active" mat-ripple>
+      <svg class="bottom-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path
+          d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/>
+      </svg>
+      <span class="bottom-nav__label">Heiß</span>
+    </a>
+    <a [@inout] class="bottom-nav__action"  (click)="selectKategorie(kat.party)" [ngClass]="{'active' : kat.party === eventType}">
+      <svg class="bottom-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M21 5V3H3v2l8 9v5H6v2h12v-2h-5v-5l8-9zM7.43 7L5.66 5h12.69l-1.78 2H7.43z"/>
+      </svg>
+      <span class="bottom-nav__label">Party</span>
+    </a>
+    <a [@inout] class="bottom-nav__action" (click)="selectKategorie(kat.kurs)" [ngClass]="{'active' : kat.kurs === eventType}">
+      <svg class="bottom-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+      </svg>
+      <span class="bottom-nav__label">Kurse</span>
+    </a>
 
-  <a class="bottom-nav__action" (click)="selectKategorie(kat.workshop)" routerLink="workshop" routerLinkActive="bottom-nav__action--active">
-    <svg class="bottom-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path
-        d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5S21.88 11 20.5 11z"/>
-    </svg>
-    <span class="bottom-nav__label">Workshops</span>
-  </a>
-  <a class="bottom-nav__action" routerLink="festival" routerLinkActive="bottom-nav__action--active">
-    <svg class="bottom-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path
-        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/>
-    </svg>
-    <span class="bottom-nav__label">Festi.</span>
-  </a>
-</nav>
+    <a [@inout] class="bottom-nav__action" (click)="selectKategorie(kat.workshop)" [ngClass]="{'active' : kat.workshop === eventType}">
+      <svg class="bottom-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path
+          d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5S21.88 11 20.5 11z"/>
+      </svg>
+      <span class="bottom-nav__label">Workshops</span>
+    </a>
+    <a [@inout] class="bottom-nav__action" (click)="selectKategorie(kat.festival)" [ngClass]="{'active' : kat.festival === eventType}">
+      <svg class="bottom-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path
+          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/>
+      </svg>
+      <span class="bottom-nav__label">Festi.</span>
+    </a>
+  </nav>
+</div>
+
+<div *ngIf="level === 'second'"  >
+  <nav class="bottom-nav">
+    <a [@inout]  class="bottom-nav__action" (click)="level='stil'" *ngIf="!eventSubType">
+      <svg class="bottom-nav__icon" viewBox="0 0 24 24">
+        <path d="M3 4l9 16 9-16H3zm3.38 2h11.25L12 16 6.38 6z"/>
+      </svg>
+      <span class="bottom-nav__label">Stil Wälen</span>
+    </a>
+    <a [@inout] class="bottom-nav__action" mat-ripple (click)="ok()">
+      <svg class="bottom-nav__icon" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      <span class="bottom-nav__label">Ok</span>
+    </a>
+    <a [@inout] class="bottom-nav__action" (click)="loadEventsVector()" *ngIf="!selectedDate">
+      <svg class="bottom-nav__icon" viewBox="0 0 24 24">
+        <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+      </svg>
+      <span class="bottom-nav__label">Datum Wälen</span>
+    </a>
+  </nav>
+</div>
+
+<div class="" *ngIf="level === 'stil'">
+  <nav class="bottom-nav">
+    <a  [@inout] class="bottom-nav__action" mat-ripple (click)="setSubKategorie(subKat.salsa_in_linee)">
+      <span class="bottom-nav__label no-icons">S.linee</span>
+    </a>
+    <a  [@inout] class="bottom-nav__action" mat-ripple (click)="setSubKategorie(subKat.salsa_cubana)">
+      <span class="bottom-nav__label no-icons">S.Cuba</span>
+    </a>
+    <a  [@inout] class="bottom-nav__action" (click)="setSubKategorie(subKat.bachata)">
+      <span class="bottom-nav__label no-icons">Bachata</span>
+    </a>
+    <a  [@inout] class="bottom-nav__action" (click)="setSubKategorie(subKat.kizomba)">
+      <span class="bottom-nav__label no-icons">Kizomba</span>
+    </a>
+    <a  [@inout] class="bottom-nav__action" (click)="level='stil-more'">
+      <svg class="bottom-nav__icon" viewBox="0 0 24 24">
+        <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+      </svg>
+    </a>
+  </nav>
+</div>
+
+<div *ngIf="level === 'stil-more'">
+  <nav class="bottom-nav">
+    <a  [@inout] class="bottom-nav__action" mat-ripple (click)="setSubKategorie(subKat.rueda)">
+      <span class="bottom-nav__label no-icons">Rueda</span>
+    </a>
+    <a  [@inout] class="bottom-nav__action" (click)="setSubKategorie(subKat.son)">
+      <span class="bottom-nav__label no-icons">Son</span>
+    </a>
+    <a  [@inout] class="bottom-nav__action" (click)="setSubKategorie(subKat.cha_cha)">
+      <span class="bottom-nav__label no-icons">Cha Cha</span>
+    </a>
+    <a  [@inout] class="bottom-nav__action" (click)="setSubKategorie(subKat.reggaeton)">
+      <span class="bottom-nav__label no-icons">Reggaeton</span>
+    </a>
+  </nav>
+</div>
+
+<div *ngIf="level === 'datum'">
+  <nav class="bottom-nav">
+    <a [@inout]  class="bottom-nav__action" mat-ripple (click)="selectDate(ndr.today)">
+      <span class="bottom-nav__label no-icons">Heute</span>
+    </a>
+    <a [@inout]  class="bottom-nav__action" (click)="selectDate(ndr.tomorrow)">
+      <span class="bottom-nav__label no-icons">Morgen</span>
+    </a>
+    <a [@inout] class="bottom-nav__action no-icons" (click)="selectDate(ndr.this_weekend)">
+      <span class="bottom-nav__label no-icons">d. We</span>
+    </a>
+    <a [@inout] mat-ripple class="bottom-nav__action" (click)="picker.open()">
+      <svg class="bottom-nav__icon" viewBox="0 0 24 24">
+        <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+      </svg>
+    </a>
+  </nav>
+</div>
+
+<mat-form-field class="datepicker">
+  <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" (dateChange)="selectDate($event)" placeholder="Datum Wählen">
+  <mat-datepicker touchUi  #picker [startAt]="0" startView="month"></mat-datepicker>
+</mat-form-field>

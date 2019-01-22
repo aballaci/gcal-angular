@@ -1,6 +1,6 @@
 {
-  "name": "salsa-today",
-  "short_name": "salsa-today",
+  "name": "Salsa Today",
+  "short_name": "Salsa Today",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

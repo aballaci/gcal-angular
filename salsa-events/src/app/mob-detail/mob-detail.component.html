@@ -1,6 +1,5 @@
 <div *ngIf="event" class="event-details  mx-auto">
-  <img alt="event thumbnail"
-    src="{{(gcEvent?.attachments  ? 'https://drive.google.com/uc?id='+ gcEvent?.attachments[0].fileId : gcEvent.thumbnail)}}">
+  <img alt="{{event.title}}" [src]="getImageSrc()" [srcset]="getImageSrcset()">
   <div class="info">
     <h3 class="detail-title" [ngClass]="{'cancelled': gcEvent.status === 'cancelled'}">{{event.title | titlecase}}</h3>
     <div  class="organiser info-block">

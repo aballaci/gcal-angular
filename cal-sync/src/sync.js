@@ -78,13 +78,13 @@ notifier.on(constants.EVENTS_API_RES, onEventsApiRes);
 notifier.on(constants.EVENTS_API_NEXT_PAGE_RES, onEventsApiNextPageRes);
 notifier.on(constants.CAL_TOKEN_DB_RES, onCalTokenDbRes);
 
-calendarSync();
-calendarEventSync();
+// calendarSync();
+// calendarEventSync();
 
-// var j = schedule.scheduleJob('*/2 * * * *', function () {
-//   calendarEventSync();
-//   calendarSync();
-// });
+var j = schedule.scheduleJob('*/2 * * * *', function () {
+  calendarEventSync();
+  calendarSync();
+});
 
 
 

@@ -1,12 +1,12 @@
 <cdk-virtual-scroll-viewport id="cdk-viewport" *ngIf="isMobile; else desktop" [itemSize]=324 [minBufferPx]=324
                              [maxBufferPx]=648 class="cdk-viewport .d-flex p-2">
-  <div *cdkVirtualFor="let event of events; trackBy: indexTrackFn"
+  <div *cdkVirtualFor="let event of events; let i = index; trackBy: indexTrackFn"
        class="event-item col-lg-4 col-md-4 col-sm-6 col-xs-12 p-lg-3">
     <a [routerLink]="['/detail', event.meta.event._id]">
       <div class="wrapper" [ngClass]="event.meta.event?.type">
         <div class="ev-container">
           <div class="top"
-               [ngStyle]="{'background-image':'url(' + (event.meta.event?.attachments  ? 'https://drive.google.com/uc?id='+ event.meta.event?.attachments[0].fileId : event.meta.event.thumbnail) + ')'}"></div>
+               [ngStyle]="{'background-image': getBgUrl(i)}"></div>
           <div class="my-bottom d-flex flex-row">
             <div class="view-date d-flex flex-column">
               <span class="text-uppercase month">{{ event.start | date: 'MMM':'+1':'de' }}</span>
@@ -129,11 +129,7 @@
     </modal-header>
     <modal-content>
       <div *ngIf="gcEvent" class="event-details  mx-auto">
-        <picture class="top">
-          <source type="image/jpg" media="(min-width: 800px)" srcset="assets/background-calm-clouds-747964-lg_1x.jpg">
-          <source type="image/webp" media="(min-width: 800px)" srcset="assets/background-calm-clouds-747964-lg_1x.webp">
-          <img src="../../assets/background-calm-clouds-747964-md_1x.webp" alt="Responsive image">
-        </picture>
+        <img alt="{{event.title}}" [src]="getImageSrc(selectedEvent)" [srcset]="getImageSrcset(selectedEvent)">
         <div class="info">
           <div class="organiser info-block">
             <div *ngIf="gcEvent.event_organiser">von {{gcEvent.event_organiser}}</div>

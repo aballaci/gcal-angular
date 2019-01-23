@@ -4,6 +4,7 @@ module.exports = function(grunt) {
       dev: {
         options: {
           engine: "gm",
+          newFilesOnly: true,
           sizes: [
             { name: "sm", suffix: "_1x", quality: 60, width: "512px", height: "256px" },
             { name: "sm", suffix: "_2x", quality: 60, width: "1024px", height: "521px" },
@@ -41,7 +42,7 @@ module.exports = function(grunt) {
         files: ['src/*.{jpg,jpeg,png}'],
         tasks: ['responsive_images'],
         options: {
-          interrupt: true,
+          interrupt: false,
           debounceDelay: 250,
           event: ['added'],
         },
@@ -51,5 +52,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks("grunt-responsive-images");
   grunt.loadNpmTasks("grunt-cwebp");
-  grunt.registerTask("default", ["responsive_images","cwebp"]);
+  grunt.registerTask("default", ["responsive_images"]);
 };

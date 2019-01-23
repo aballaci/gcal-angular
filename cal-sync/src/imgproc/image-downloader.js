@@ -7,7 +7,7 @@ module.exports.getImage = function(fileId, filename, callback){
     var destination = '';
 
     if (process.env.NODE_ENV == 'production') {
-        destination = path.join('/var/responsive');
+        destination = '/var/responsive';
     } else {
         destination = path.join(__dirname, '/../../img/');
     }
@@ -21,16 +21,16 @@ module.exports.getImage = function(fileId, filename, callback){
         dest: path.join(destination, newName)                  // Save to /path/to/dest/image.jpg
     }
 
-    if(fs.existsSync(path.join(destination, newName))){
-        console.log('file ' + filename + ' exists already!');
+    if(fs.existsSync(options.dest)){
+        console.log('file ' + options.dest + ' exists already!');
         return;
     }
     download.image(options)
         .then(({ filename, image }) => {
-            console.log('File saved to', filename)
+            callback(filename);
         })
         .catch((err) => {
-            console.error(err)
+            console.error('Error downloading image: ' + err)
         });
 };
 

@@ -26,14 +26,8 @@ export class EventDetailComponent implements OnInit {
   }
   ngOnInit() {
   }
-  /**
-  locationClicked(event: CalendarEvent<{ event: Event }>): void {
-    window.open(
-      `https://www.google.com/maps/search/${event.meta.event.location}`,
-      '_blank'
-    );
-  }
-  */
+
+
 
 
 

@@ -4,7 +4,6 @@ import { EventService } from '../services/event.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import { IcsService } from '../services/ics.service';
 import { saveAs } from 'file-saver';
-import { Utils } from '../utils/Utils';
 
 @Component({
   selector: 'app-mob-detail',
@@ -44,6 +43,22 @@ export class MobDetailComponent implements OnInit {
       });
   }
 
+  getImageSrc(size = 'sm', den = '1x', ext?: string) {
+    const fileId: string = this.gcEvent.attachments[0].fileId;
+    const fileName: string = this.gcEvent.attachments[0].title;
+    const fnParts = fileName.split('.');
+    const extension = ext ? ext : fnParts[1];
+    return '/img/' + fileId + '-' + size + '_' + den + '.' + extension + ' ' + den;
+  }
+
+  getImageSrcset() {
+    const sources: string[] = new Array();
+    sources.push(this.getImageSrc('sm', '2x'));
+    sources.push(this.getImageSrc('md', '1x'));
+    sources.push(this.getImageSrc('md', '2x'));
+    return sources.join(',');
+  }
+
   scrollToMap() {
     const map = document.querySelector('#map-target');
     console.log('scroll');
@@ -62,9 +77,5 @@ export class MobDetailComponent implements OnInit {
     const blob = this.icsService.getIcsBlob(icsData);
     const fileName = this.icsService.getIcsFileName(this.event.title);
     saveAs(blob, fileName);
-  }
-
-  back() {
-    this.router.navigate(['/home']);
   }
 }

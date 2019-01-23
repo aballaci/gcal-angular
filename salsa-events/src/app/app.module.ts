@@ -61,6 +61,8 @@ import { EventsListComponent } from './components/events-list/events-list.compon
 import { PlaylistComponent } from './components/playlist/playlist.component';
 import {NgxJsonLdModule} from 'ngx-json-ld';
 import {ModalModule} from 'ngb-modal';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 registerLocaleData(localeDE);
 
 
@@ -100,7 +102,8 @@ registerLocaleData(localeDE);
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [
     AppComponent,

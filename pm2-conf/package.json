@@ -1,0 +1,15 @@
+{
+  "name": "pm2-conf",
+  "version": "1.0.0",
+  "description": "pm2 ecosystem",
+  "main": " ecosystem.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pm2",
+    "ecosystem"
+  ],
+  "author": "armand ballaci",
+  "license": "ISC"
+}

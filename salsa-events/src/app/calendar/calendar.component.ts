@@ -131,7 +131,7 @@ export class CalendarComponent implements OnInit {
 
     // console.log('params: ' + params);
     this.events$ = this.http
-      .get<Event[]>(environment.serviceUrl, { params })
+      .get<Event[]>(`${environment.serviceUrl}/event`, { params })
       .pipe(
         map(events => {
           let firstDayWithEvents: Date = startOfToday();

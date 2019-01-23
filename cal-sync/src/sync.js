@@ -33,20 +33,30 @@ var onEventTokenDbRes = ( token ) => {
 
 }
 
-var onEventsApiRes = ( event ) => {
-  console.log('onEventsApiRes' + event);
-  dbService.insertItems(event.calendarId, event.items);
-  dbService.updateCalendarSyncToken({ id:event.calendarId, syncToken: event.syncToken });
-  downloadImages(event);
+var onEventsApiRes = (event) => {
+  console.log('onEventsApiRes length' + event.items.length);
+  if (event.items.length > 0) {
+    dbService.insertItems(event.calendarId, event.items);
+    dbService.updateCalendarSyncToken({id: event.calendarId, syncToken: event.syncToken});
+    downloadImages(event);
+  } else {
+    console.log('nothing to do... length:' + event.items.length);
+  }
 }
 
-var downloadImages = (event ) => {
+let downloadImages = (event ) => {
   console.log('downloadImages called: ' +  event.items.length);
+  let files = {};
   event.items.forEach(function ( item ) {
-    downloader.getImage(item.attachments[0].fileId, item.attachments[0].title, function () {
-      console.log('downloade image:' + item.attachments[0].title);
-    })
+      files[item.attachments[0].fileId] = item.attachments[0].title;
   });
+  Object.keys(files).forEach(function(key) {
+    console.log('Key : ' + key + ', Value : ' + files[key]);
+    downloader.getImage(key, files[key], function (filename) {
+      console.log('downloaded image:' + filename);
+    });
+  })
+
 
 }
 
@@ -78,13 +88,16 @@ notifier.on(constants.EVENTS_API_RES, onEventsApiRes);
 notifier.on(constants.EVENTS_API_NEXT_PAGE_RES, onEventsApiNextPageRes);
 notifier.on(constants.CAL_TOKEN_DB_RES, onCalTokenDbRes);
 
-calendarSync();
-calendarEventSync();
+// calendarSync();
+// calendarEventSync();
 
-// var j = schedule.scheduleJob('*/2 * * * *', function () {
-//   calendarEventSync();
-//   calendarSync();
-// });
+var j = schedule.scheduleJob('*/2 * * * *', function () {
+  calendarEventSync();
+});
+
+var x = schedule.scheduleJob('*/10 * * * *', function () {
+  calendarSync();
+});
 
 
 

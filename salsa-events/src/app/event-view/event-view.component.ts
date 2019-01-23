@@ -30,6 +30,8 @@ export class EventViewComponent implements OnInit {
 
   gcEvent: any;
 
+  selectedEvent: number;
+
   private modalRef;
 
 
@@ -50,6 +52,7 @@ export class EventViewComponent implements OnInit {
   showModal(index: number) {
     console.log('selected event: ' + index);
     this.event = this.events[index];
+    this.selectedEvent = index;
     this.gcEvent = this.event.meta.event;
     console.log('showModal called' + this.eventDetailModal);
     this.modalRef = this.modal.open(this.eventDetailModal,  {
@@ -140,19 +143,30 @@ export class EventViewComponent implements OnInit {
     saveAs(blob, fileName);
   }
 
-  getImageUrl(i: number): string {
-    console.log('called with index: ' + i);
+  getImageSrc(i: number, size = 'md', den = '1x', bg?: boolean) {
     const event: CalendarEvent = this.events[i];
     const gcEvent = event.meta.event;
-    const fileId = gcEvent.attachments[0].fileId;
-    const fileName = gcEvent.attachments[0].title;
-    const extenstion = fileName.split('.')[1];
-    const imgSrcArr = [];
+    const fileId: string = gcEvent.attachments[0].fileId;
+    const fileName: string = gcEvent.attachments[0].title;
+    const fnParts = fileName.split('.');
+    const extension = fnParts[1];
 
-    imgSrcArr.push('/img/' + fileId + '-sm.' + extenstion + ' 1x');
-    imgSrcArr.push('/img/' + fileId + '-md.' + extenstion);
-    imgSrcArr.push('/img/' + fileId + '-lg.' + extenstion);
-    return '';
+    const imageSrc =  '/img/' + fileId + '-' + size + '_' + den + '.' + extension + ' ' + den;
+    const imageBg =  '/img/' + fileId + '-' + size + '_' + den + '.' + extension;
+    return bg ? imageBg : imageSrc;
   }
+
+  getImageSrcset(i: number) {
+    const sources: string[] = new Array();
+    sources.push(this.getImageSrc(i, 'sm', '2x'));
+    sources.push(this.getImageSrc(i, 'md', '1x'));
+    sources.push(this.getImageSrc(i, 'md', '2x'));
+    return sources.join(',');
+  }
+
+  getBgUrl(i: number) {
+    return 'url(' + this.getImageSrc(i, 'sm', '1x', true) + ')';
+  }
+
 }
 

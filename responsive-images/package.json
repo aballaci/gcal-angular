@@ -13,7 +13,7 @@
   "author": "armand ballaci",
   "license": "ISC",
   "devDependencies": {
-    "grunt": "^1.0.3",
+    "grunt": "^1.5.2",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-cwebp": "^2.1.1",
     "grunt-responsive-images": "^1.10.1"

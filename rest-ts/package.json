@@ -34,18 +34,18 @@
     "nodemon": "^1.18.9",
     "request": "^2.88.0",
     "typescript-logging": "^0.6.3",
-    "webpack": "^4.28.4"
+    "webpack": "^5.75.0"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
     "@types/mongodb": "^3.1.18",
     "@types/mongoose": "^5.3.7",
     "body-parser": "^1.18.3",
-    "ts-loader": "^5.3.3",
+    "ts-loader": "^9.4.2",
     "ts-node-dev": "^1.0.0-pre.32",
     "typescript": "^3.2.2",
     "typescript-tools": "^0.3.1",
-    "webpack-cli": "^3.2.1",
+    "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^3.1.14"
   }
 }
